@@ -1,0 +1,2 @@
+# Snappy.Common.Client
+
