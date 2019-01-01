@@ -24,7 +24,5 @@ namespace Snappy.Common.Client.Tests.Models.Requests
         {
             Assert.Throws<ArgumentException>(() => { new UserChangePasswordRequest(currentUserId, oldPassword, newPassword); });
         }
-
-
     }
 }
