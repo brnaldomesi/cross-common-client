@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Snappy.Common.Client.Tests
+﻿namespace Snappy.Common.Client.Tests
 {
     public static class TestDataHelper
     {

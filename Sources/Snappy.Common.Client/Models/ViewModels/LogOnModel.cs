@@ -33,6 +33,12 @@ namespace Snappy.Common.Client.Models.ViewModels
                 InputErrorMessages.AddRange(EmailInput.ErrorMessage);
             }
 
+            if (Password.IsEmpty())
+            {
+                PasswordInput.ErrorMessage.Add("password_required_error_message");
+                InputErrorMessages.AddRange(PasswordInput.ErrorMessage);
+            }
+
             if (Email.IsNotEmail())
             {
                 EmailInput.ErrorMessage.Add("email_is_not_valid_error_message");
