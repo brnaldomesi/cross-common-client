@@ -13,12 +13,12 @@ namespace Snappy.Common.Client.Models.ViewModels
         public string Password { get; set; }
         public bool IsTermsAccepted { get; set; }
 
-        public EmailInputModel EmailInput { get; set; }
-        public InputModel FirstNameInput { get; set; }
-        public InputModel LastNameInput { get; set; }
-        public LongInputModel OrganizationNameInput { get; set; }
-        public PasswordInputModel PasswordInput { get; set; }
-        public CheckboxInputModel IsTermsAcceptedInput { get; set; }
+        public EmailInputModel EmailInput { get; }
+        public InputModel FirstNameInput { get; }
+        public InputModel LastNameInput { get; }
+        public LongInputModel OrganizationNameInput { get; }
+        public PasswordInputModel PasswordInput { get; }
+        public CheckboxInputModel IsTermsAcceptedInput { get; }
 
         public SignUpModel()
         {
@@ -48,6 +48,30 @@ namespace Snappy.Common.Client.Models.ViewModels
             {
                 EmailInput.ErrorMessage.Add("email_required_error_message");
                 InputErrorMessages.AddRange(EmailInput.ErrorMessage);
+            }
+
+            if (FirstName.IsEmpty())
+            {
+                FirstNameInput.ErrorMessage.Add("first_name_required_error_message");
+                InputErrorMessages.AddRange(FirstNameInput.ErrorMessage);
+            }
+
+            if (LastName.IsEmpty())
+            {
+                LastNameInput.ErrorMessage.Add("last_name_required_error_message");
+                InputErrorMessages.AddRange(LastNameInput.ErrorMessage);
+            }
+
+            if (OrganizationName.IsEmpty())
+            {
+                OrganizationNameInput.ErrorMessage.Add("organization_name_required_error_message");
+                InputErrorMessages.AddRange(OrganizationNameInput.ErrorMessage);
+            }
+
+            if (Password.IsEmpty())
+            {
+                PasswordInput.ErrorMessage.Add("password_required_error_message");
+                InputErrorMessages.AddRange(PasswordInput.ErrorMessage);
             }
 
             if (Email.IsNotEmail())

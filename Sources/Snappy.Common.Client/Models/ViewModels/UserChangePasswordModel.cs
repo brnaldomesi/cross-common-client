@@ -32,6 +32,24 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public override void SetInputErrorMessages()
         {
+            if (OldPassword.IsEmpty())
+            {
+                OldPasswordInput.ErrorMessage.Add("password_required_error_message");
+                InputErrorMessages.AddRange(OldPasswordInput.ErrorMessage);
+            }
+
+            if (NewPassword.IsEmpty())
+            {
+                NewPasswordInput.ErrorMessage.Add("password_required_error_message");
+                InputErrorMessages.AddRange(NewPasswordInput.ErrorMessage);
+            }
+
+            if (ReEnterNewPassword.IsEmpty())
+            {
+                ReEnterNewPasswordInput.ErrorMessage.Add("password_required_error_message");
+                InputErrorMessages.AddRange(ReEnterNewPasswordInput.ErrorMessage);
+            }
+
             if (OldPassword.IsNotValidPassword())
             {
                 OldPasswordInput.ErrorMessage.Add("password_is_not_valid_error_message");
