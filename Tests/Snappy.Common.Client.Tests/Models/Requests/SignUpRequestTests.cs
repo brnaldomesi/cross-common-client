@@ -21,9 +21,9 @@ namespace Snappy.Common.Client.Tests.Models.Requests
             Assert.AreEqual(TestDataHelper.PASSWORD, request.Password);
         }
 
-        [TestCase(TestDataHelper.EMPTYSTRING, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.EMPTYSTRING, TestDataHelper.NAME, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.EMPTYSTRING, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.EMPTY_STRING, TestDataHelper.NAME, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.EMPTY_STRING, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
         [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.NAME, "testtest.com", TestDataHelper.PASSWORD)]
         [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.EMAIL, "wrongPass")]
         public void SignUpRequest_Argument_Validations(string firstName, string lastName, string email, string organizationName, string password)

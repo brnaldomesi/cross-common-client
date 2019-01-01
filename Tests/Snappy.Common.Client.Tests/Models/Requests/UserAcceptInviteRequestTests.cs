@@ -19,9 +19,9 @@ namespace Snappy.Common.Client.Tests.Models.Requests
         }
 
         [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, "Test+")]
-        [TestCase(TestDataHelper.EMPTYSTRING, TestDataHelper.LASTNAME, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.EMPTYSTRING, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.EMPTYSTRING)]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.LASTNAME, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.EMPTY_STRING)]
         public void UserAcceptInviteRequest_Argument_Validations(string firstName, string lastName, string password)
         {
             Assert.Throws<ArgumentException>(() => { new UserAcceptInviteRequest(firstName, lastName, password); });

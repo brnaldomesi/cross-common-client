@@ -17,8 +17,8 @@ namespace Snappy.Common.Client.Tests.Models.Requests
             Assert.AreEqual(TestDataHelper.DESCRIPTION, request.Description);
         }
 
-        [TestCase(TestDataHelper.EMPTYSTRING, TestDataHelper.EMPTYSTRING),
-         TestCase(TestDataHelper.EMPTYSTRING, TestDataHelper.DESCRIPTION)]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.EMPTY_STRING),
+         TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.DESCRIPTION)]
         public void IntegrationCreateRequest_Argument_Validations(string integrationName, string description)
         {
             Assert.Throws<ArgumentException>(() => { new IntegrationCreateRequest(integrationName, description); });

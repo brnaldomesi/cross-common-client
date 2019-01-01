@@ -16,7 +16,7 @@ namespace Snappy.Common.Client.Tests.Models.Requests
             Assert.AreEqual(TestDataHelper.EMAIL, request.Email);
         }
 
-        [TestCase(TestDataHelper.EMPTYSTRING)]
+        [TestCase(TestDataHelper.EMPTY_STRING)]
         [TestCase("testtest.com")]
         public void DemandPasswordResetRequest_Argument_Validations(string email)
         {

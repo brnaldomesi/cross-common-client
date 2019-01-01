@@ -17,8 +17,8 @@ namespace Snappy.Common.Client.Tests.Models.Requests
             Assert.AreEqual(TestDataHelper.PASSWORD, request.Password);
         }
 
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTYSTRING)]
-        [TestCase(TestDataHelper.EMPTYSTRING, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING)]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD)]
         public void LogOnRequest_Argument_Validations(string email, string password)
         {
             Assert.Throws<ArgumentException>(() => { new LogOnRequest(email, password); });
