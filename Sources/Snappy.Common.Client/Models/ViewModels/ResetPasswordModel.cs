@@ -4,7 +4,7 @@ using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    class ResetPasswordModel : BaseModel
+    public sealed class ResetPasswordModel : BaseModel
     {
         public string Password { get; set; }
         public string ReEnterPassword { get; set; }

@@ -4,7 +4,7 @@ using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    class IntegrationCreateModel : BaseModel
+    public sealed class IntegrationCreateModel : BaseModel
     {
         public string IntegrationName { get; set; }
         public string Description { get; set; }

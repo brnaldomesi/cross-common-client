@@ -4,7 +4,7 @@ using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    class InviteModel : BaseModel
+    public sealed class InviteModel : BaseModel
     {
         public string Email { get; set; }
         public string FirstName { get; set; }

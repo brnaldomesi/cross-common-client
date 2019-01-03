@@ -4,7 +4,7 @@ using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    public class SignUpModel : BaseModel
+    public sealed class SignUpModel : BaseModel
     {
         public string Email { get; set; }
         public string FirstName { get; set; }
@@ -78,24 +78,6 @@ namespace Snappy.Common.Client.Models.ViewModels
             {
                 EmailInput.ErrorMessage.Add("email_is_not_valid_error_message");
                 InputErrorMessages.AddRange(EmailInput.ErrorMessage);
-            }
-
-            if (FirstName.IsEmpty())
-            {
-                FirstNameInput.ErrorMessage.Add("first_name_required_error_message");
-                InputErrorMessages.AddRange(FirstNameInput.ErrorMessage);
-            }
-
-            if (LastName.IsEmpty())
-            {
-                LastNameInput.ErrorMessage.Add("last_name_required_error_message");
-                InputErrorMessages.AddRange(LastNameInput.ErrorMessage);
-            }
-
-            if (OrganizationName.IsEmpty())
-            {
-                OrganizationNameInput.ErrorMessage.Add("organization_name_required_error_message");
-                InputErrorMessages.AddRange(OrganizationNameInput.ErrorMessage);
             }
 
             if (Password.IsNotValidPassword())
