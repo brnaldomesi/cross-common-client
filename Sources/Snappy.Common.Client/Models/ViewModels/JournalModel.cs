@@ -1,4 +1,5 @@
 ﻿using System;
+
 using Snappy.Common.Client.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels

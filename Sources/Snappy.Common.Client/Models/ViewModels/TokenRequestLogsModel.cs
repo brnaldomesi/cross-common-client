@@ -6,6 +6,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 {
     public class TokenRequestLogsModel : BaseModel
     {
+        public string UserUId { get; set; }
         public string IntegrationUId { get; set; }
         public string IntegrationName { get; set; }
         public string AccessToken { get; set; }
