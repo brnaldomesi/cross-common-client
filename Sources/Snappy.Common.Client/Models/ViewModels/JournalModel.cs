@@ -4,7 +4,7 @@ using Snappy.Common.Client.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    public class JournalModel : BaseModel
+    public sealed class JournalModel : BaseModel
     {
         public string UserUId { get; set; }
         public string UserName { get; set; }

@@ -4,7 +4,7 @@ using Snappy.Common.Client.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    public class TokenRequestLogsModel : BaseModel
+    public sealed class TokenRequestLogsModel : BaseModel
     {
         public string UserUId { get; set; }
         public string IntegrationUId { get; set; }

@@ -4,7 +4,7 @@ using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    public class UserChangePasswordModel : BaseModel
+    public sealed class UserChangePasswordModel : BaseModel
     {
         public string OldPassword { get; set; }
         public string NewPassword { get; set; }
