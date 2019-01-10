@@ -16,7 +16,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public InviteModel()
         {
-            Title = Localizer.Localize("invite_tittle");
+            Title = Localizer.Localize("invite_title");
 
             EmailInput = new EmailInputModel("Email","email",true);
             FirstNameInput = new InputModel("FirstName","first_name",true);
@@ -38,6 +38,12 @@ namespace Snappy.Common.Client.Models.ViewModels
                 InputErrorMessages.AddRange(EmailInput.ErrorMessage);
             }
 
+            if (Email.IsNotEmail())
+            {
+                EmailInput.ErrorMessage.Add("email_is_not_valid_error_message");
+                InputErrorMessages.AddRange(EmailInput.ErrorMessage);
+            }
+
             if (FirstName.IsEmpty())
             {
                 FirstNameInput.ErrorMessage.Add("first_name_required_error_massage");
@@ -48,12 +54,6 @@ namespace Snappy.Common.Client.Models.ViewModels
             {
                 LastNameInput.ErrorMessage.Add("last_name_required_error_massage");
                 InputErrorMessages.AddRange(LastNameInput.ErrorMessage);
-            }
-
-            if (Email.IsNotEmail())
-            {
-                EmailInput.ErrorMessage.Add("email_is_not_valid_error_message");
-                InputErrorMessages.AddRange(EmailInput.ErrorMessage);
             }
         }
     }

@@ -6,8 +6,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 {
     public sealed class TokenRequestLogsModel : BaseModel
     {
-        public string UserUId { get; set; }
-        public string IntegrationUId { get; set; }
+        public string IntegrationUid { get; set; }
         public string IntegrationName { get; set; }
         public string AccessToken { get; set; }
         public string Ip { get; set; }
@@ -18,7 +17,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public TokenRequestLogsModel()
         {
-            Title = Localizer.Localize("token_request_logs_tittle");
+            Title = Localizer.Localize("token_request_logs_title");
         }
     }
 }

@@ -14,7 +14,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public JournalModel()
         {
-            Title = Localizer.Localize("journal_tittle");
+            Title = Localizer.Localize("journal_title");
         }
     }
 }

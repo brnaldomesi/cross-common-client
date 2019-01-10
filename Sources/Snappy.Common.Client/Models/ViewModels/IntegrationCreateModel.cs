@@ -9,15 +9,15 @@ namespace Snappy.Common.Client.Models.ViewModels
         public string IntegrationName { get; set; }
         public string Description { get; set; }
 
-        public LongInputModel IntegrationNameInput { get; }
-        public TextareaInputModel DescriptionInput { get; }
+        public InputModel IntegrationNameInput { get; }
+        public LongInputModel DescriptionInput { get; }
 
         public IntegrationCreateModel()
         {
             Title = Localizer.Localize("integration_create_title");
 
-            IntegrationNameInput = new LongInputModel("IntegrationName", "integration_name", true);
-            DescriptionInput = new TextareaInputModel("Description", "description", false);
+            IntegrationNameInput = new InputModel("IntegrationName", "integration_name", true);
+            DescriptionInput = new LongInputModel("Description", "description");
         }
 
         public override void SetInputModelValues()

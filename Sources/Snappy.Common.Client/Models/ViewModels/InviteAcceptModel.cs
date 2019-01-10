@@ -4,7 +4,7 @@ using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
-    public sealed class AcceptInviteModel : BaseModel
+    public sealed class InviteAcceptModel : BaseModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -16,7 +16,7 @@ namespace Snappy.Common.Client.Models.ViewModels
         public PasswordInputModel NewPasswordInput { get; }
         public PasswordInputModel ReEnterNewPasswordInput { get; }
 
-        public AcceptInviteModel()
+        public InviteAcceptModel()
         {
             Title = Localizer.Localize("accept_invite_title");
 
