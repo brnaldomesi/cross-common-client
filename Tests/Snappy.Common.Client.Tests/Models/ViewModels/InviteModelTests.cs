@@ -11,7 +11,7 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
         public void InviteModel_has_title()
         {
             var model = GetModel();
-            Assert.AreEqual(model.Title, "invite_tittle");
+            Assert.AreEqual(model.Title, "invite_title");
         }
 
         [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, "email_required_error_massage")]
