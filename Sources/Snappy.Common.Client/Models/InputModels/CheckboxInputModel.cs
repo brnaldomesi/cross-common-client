@@ -10,6 +10,7 @@
                                 : base(name, labelKey, isRequired, value.ToString())
         {
             Value = value;
+            IsReadOnly = isReadOnly;
         }
     }
 }

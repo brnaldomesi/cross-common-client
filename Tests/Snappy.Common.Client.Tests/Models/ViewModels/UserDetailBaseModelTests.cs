@@ -21,7 +21,7 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             Assert.AreEqual(model.IsActiveInput.Name, "IsActive");
             Assert.AreEqual(model.IsActiveInput.LabelKey, "is_active");
             Assert.False(model.IsActiveInput.IsRequired);
-            Assert.True(model.IsActiveInput.IsReadOnly);
+            Assert.False(model.IsActiveInput.IsReadOnly);
         }
 
         private static UserDetailBaseModel GetModel()
