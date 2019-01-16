@@ -7,7 +7,7 @@
 
         public CheckboxInputModel(string name, string labelKey, bool isRequired = false, 
                                   bool isReadOnly = false, bool value = false) 
-                                : base(name, labelKey, isRequired, value.ToString())
+                                : base(name, labelKey, isRequired)
         {
             Value = value;
             IsReadOnly = isReadOnly;
