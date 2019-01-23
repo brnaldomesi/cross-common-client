@@ -12,4 +12,8 @@
     <ProjectReference Include="..\..\..\snappy.common\Sources\Snappy.Common\Snappy.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Requests\Membership\" />
+  </ItemGroup>
+
 </Project>
