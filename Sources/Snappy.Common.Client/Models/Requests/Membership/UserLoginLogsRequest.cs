@@ -1,4 +1,4 @@
-﻿namespace Snappy.Common.Client.Models.Requests
+﻿namespace Snappy.Common.Client.Models.Requests.Membership
 {
     public sealed class UserLoginLogsRequest : BaseAuthenticatedRequest
     {

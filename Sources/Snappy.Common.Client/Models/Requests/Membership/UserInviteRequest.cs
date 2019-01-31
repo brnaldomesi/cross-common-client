@@ -1,9 +1,8 @@
 ﻿using System;
 
 using Snappy.Common.Helpers;
-using Snappy.Common.Models.Requests;
 
-namespace Snappy.Common.Client.Models.Requests
+namespace Snappy.Common.Client.Models.Requests.Membership
 {
     public sealed class UserInviteRequest : BaseAuthenticatedRequest
     {

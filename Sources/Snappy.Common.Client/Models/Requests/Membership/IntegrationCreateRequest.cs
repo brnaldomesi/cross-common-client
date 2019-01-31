@@ -3,9 +3,9 @@
 using Snappy.Common.Helpers;
 using Snappy.Common.Models.Requests;
 
-namespace Snappy.Common.Client.Models.Requests
+namespace Snappy.Common.Client.Models.Requests.Membership
 {
-    public sealed class IntegrationCreateRequest : BaseRequest
+    public class IntegrationCreateRequest : BaseRequest
     {
         public string IntegrationName { get; }
         public string Description { get; }

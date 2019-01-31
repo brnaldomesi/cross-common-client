@@ -3,15 +3,17 @@
 using Snappy.Common.Helpers;
 using Snappy.Common.Models.Requests;
 
-namespace Snappy.Common.Client.Models.Requests
+namespace Snappy.Common.Client.Models.Requests.Membership
 {
-    public sealed class UserAcceptInviteRequest : BaseRequest
+    public sealed class SignUpRequest : BaseRequest
     {
         public string FirstName { get; }
         public string LastName { get; }
+        public string Email { get; }
+        public string OrganizationName { get; }
         public string Password { get; }
 
-        public UserAcceptInviteRequest(string firstName, string lastName, string password)
+        public SignUpRequest(string firstName, string lastName, string organizationName, string email, string password)
         {
             if (firstName.IsEmpty())
             {
@@ -23,6 +25,16 @@ namespace Snappy.Common.Client.Models.Requests
                 throw new ArgumentException(nameof(lastName));
             }
 
+            if (organizationName.IsEmpty())
+            {
+                throw new ArgumentException(nameof(organizationName));
+            }
+
+            if (email.IsNotEmail())
+            {
+                throw new ArgumentException(nameof(email));
+            }
+
             if (password.IsNotValidPassword())
             {
                 throw new ArgumentException(nameof(password));
@@ -30,6 +42,8 @@ namespace Snappy.Common.Client.Models.Requests
 
             FirstName = firstName;
             LastName = lastName;
+            OrganizationName = organizationName;
+            Email = email;
             Password = password;
         }
     }
