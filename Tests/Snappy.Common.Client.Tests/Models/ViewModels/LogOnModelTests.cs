@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
@@ -14,18 +15,38 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             Assert.AreEqual(model.Title, "log_on_title");
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, "email_required_error_message")]
-        [TestCase("asd", TestDataHelper.PASSWORD, "email_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.EMAIL, "asd", "password_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING, "password_required_error_message")]
-        public void LogOnModel_Validates_AddsErrorMessages(string email, string password, string errorMessage)
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, new string[]
+        {
+            "email_required_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.PASSWORD, new string[]
+        {
+            "email_is_not_valid_error_message"
+        })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "password_required_error_message"
+        })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, new string[]
+        {
+            "password_is_not_valid_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING, new string[]
+        {
+            "email_is_not_valid_error_message",
+            "password_is_not_valid_error_message"
+        })]
+        public void LogOnModel_Validates_AddsErrorMessages(string email, string password, string[] errorMessage)
         {
             var model = GetModel();
             model.Email = email;
             model.Password = password;
 
             Assert.False(model.IsValid());
-            Assert.True(model.InputErrorMessages.Contains(errorMessage));
+            foreach (var message in errorMessage)
+            {
+                Assert.True(model.InputErrorMessages.Contains(message));
+            }
         }
 
         [Test]

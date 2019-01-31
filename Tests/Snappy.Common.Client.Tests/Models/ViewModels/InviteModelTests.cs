@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
@@ -14,11 +15,33 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             Assert.AreEqual(model.Title, "invite_title");
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, "email_required_error_massage")]
-        [TestCase("asd", TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, "email_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING, TestDataHelper.LASTNAME, "first_name_required_error_massage")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.FIRSTNAME, TestDataHelper.EMPTY_STRING, "last_name_required_error_massage")]
-        public void InviteModel_Validates_AddsErrorMessages(string email, string firstName, string lastName, string errorMessage)
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING, TestDataHelper.STRING_1, new string[]
+        {
+            "email_required_error_massage"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING, TestDataHelper.STRING_1, new string[]
+        {
+            "email_is_not_valid_error_message"
+        })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_1, new string[]
+        {
+            "first_name_required_error_massage"
+        })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "last_name_required_error_massage"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_1, new string[]
+        {
+            "email_is_not_valid_error_message",
+            "first_name_required_error_massage"
+        })]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING, TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "email_required_error_massage",
+            "last_name_required_error_massage"
+        })]
+        public void InviteModel_Validates_AddsErrorMessages(string email, string firstName, string lastName, string[] errorMessage)
         {
             var model = GetModel();
             model.Email = email;
@@ -26,7 +49,10 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             model.LastName = lastName;
 
             Assert.False(model.IsValid());
-            Assert.True(model.InputErrorMessages.Contains(errorMessage));
+            foreach (var message in errorMessage)
+            {
+                Assert.True(model.InputErrorMessages.Contains(message));
+            }
         }
 
         [Test]

@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
@@ -14,15 +15,24 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             Assert.AreEqual(model.Title, "demand_password_reset_title");
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, "email_required_error_message")]
-        [TestCase("asd", "email_is_not_valid_error_message")]
-        public void DemandPasswordResetModel_Validates_AddsErrorMessages(string email, string errorMessage)
+        [TestCase(TestDataHelper.STRING,new string[]
+        {
+            "email_is_not_valid_error_message"
+        })]
+        [TestCase(TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "email_required_error_message"
+        })]
+        public void _Validates_InputErrorMessages(string email, string[] errorMessage)
         {
             var model = GetModel();
             model.Email = email;
 
             Assert.False(model.IsValid());
-            Assert.True(model.InputErrorMessages.Contains(errorMessage));
+            foreach (var message in errorMessage)
+            {
+                Assert.True(model.InputErrorMessages.Contains(message));
+            }
         }
 
         [Test]

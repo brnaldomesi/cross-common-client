@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.Requests;
+using Snappy.Common.Client.Models.Requests.Membership;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.Requests
 {
@@ -10,8 +12,8 @@ namespace Snappy.Common.Client.Tests.Models.Requests
         [Test]
         public void UserDetailRequest_Constructor()
         {
-            var request = new UserDetailRequest(TestDataHelper.CURRENT_USER_ID);
-            Assert.AreEqual(TestDataHelper.CURRENT_USER_ID, request.CurrentUserId);
+            var request = new UserDetailRequest(TestDataHelper.UID);
+            Assert.AreEqual(TestDataHelper.UID, request.UserUid);
         }
     }
 }

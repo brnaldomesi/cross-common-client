@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
@@ -14,23 +15,75 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             Assert.AreEqual(model.Title, "user_change_password_title");
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, "password_required_error_message")]
-        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, "password_required_error_message")]
-        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, "new_password_can_not_same_as_old_password_error_message")]
-        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD+"*", TestDataHelper.PASSWORD, "re_entered_password_does_not_match_error_message")]
-        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD+"*", TestDataHelper.EMPTY_STRING, "password_required_error_message")]
-        [TestCase("asd", TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, "password_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.PASSWORD, "asd", TestDataHelper.PASSWORD+"*", "password_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, "asd", "password_is_not_valid_error_message")]
-        public void ChangePasswordModel_Validates_AddsErrorMessages(string oldPassword, string newPassword, string reEnterNewPassword, string errorMessage)
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD_1, TestDataHelper.PASSWORD_1, new string[]
+        {
+            "old_password_required_error_message"
+        })]
+        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD_1, new string[]
+        {
+            "new_password_required_error_message"
+        })]
+        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD_1, TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "re_entered_password_required_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.PASSWORD_1, TestDataHelper.PASSWORD_1, new string[]
+        {
+            "old_password_is_not_valid_error_message"
+        })]
+        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.STRING, TestDataHelper.STRING, new string[]
+        {
+            "new_password_is_not_valid_error_message"
+        })]
+        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD_1, TestDataHelper.STRING, new string[]
+        {
+            "re_entered_password_is_not_valid_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, new string[]
+        {
+            "new_password_can_not_same_as_old_password_error_message"
+        })]
+        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD_1, TestDataHelper.PASSWORD_2, new string[]
+        {
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "re_entered_password_is_not_valid_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.EMPTY_STRING, TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "old_password_required_error_message",
+            "new_password_required_error_message",
+            "re_entered_password_required_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING, TestDataHelper.STRING_1, new string[]
+        {
+            "old_password_is_not_valid_error_message",
+            "new_password_is_not_valid_error_message",
+            "new_password_can_not_same_as_old_password_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD_1, TestDataHelper.PASSWORD, new string[]
+        {
+            "old_password_required_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        public void ChangePasswordModel_Validates_InputErrorMessages(string oldPassword, string newPassword, string reEnteredPassword,
+                                                                string[] errorMessage)
         {
             var model = GetModel();
             model.OldPassword = oldPassword;
             model.NewPassword = newPassword;
-            model.ReEnterNewPassword = reEnterNewPassword;
+            model.ReEnterNewPassword = reEnteredPassword;
 
             Assert.False(model.IsValid());
-            Assert.True(model.InputErrorMessages.Contains(errorMessage));
+            foreach (var message in errorMessage)
+            {
+                Assert.True(model.InputErrorMessages.Contains(message));
+            }
         }
 
         [Test]

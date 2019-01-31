@@ -36,7 +36,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
             if (ReEnterPassword.IsEmpty())
             {
-                PasswordInput.ErrorMessage.Add("password_required_error_message");
+                PasswordInput.ErrorMessage.Add("re_entered_password_required_error_message");
                 InputErrorMessages.AddRange(PasswordInput.ErrorMessage);
             }
 
@@ -48,7 +48,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
             if (ReEnterPassword.IsNotValidPassword())
             {
-                ReEnterPasswordInput.ErrorMessage.Add("password_is_not_valid_error_message");
+                ReEnterPasswordInput.ErrorMessage.Add("re_entered_password_is_not_valid_error_message");
                 InputErrorMessages.AddRange(ReEnterPasswordInput.ErrorMessage);
             }
 

@@ -1,6 +1,8 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.Requests;
+using Snappy.Common.Client.Models.Requests.Membership;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.Requests
 {
@@ -10,8 +12,8 @@ namespace Snappy.Common.Client.Tests.Models.Requests
         [Test]
         public void PermissionLogsRequest_Constructor()
         {
-            var request = new PermissionLogsRequest(TestDataHelper.CURRENT_USER_ID);
-            Assert.AreEqual(TestDataHelper.CURRENT_USER_ID, request.CurrentUserId);
+            var request = new PermissionLogsRequest(TestDataHelper.POSITIVE_NUMBER);
+            Assert.AreEqual(TestDataHelper.POSITIVE_NUMBER, request.CurrentUserId);
         }
     }
 }

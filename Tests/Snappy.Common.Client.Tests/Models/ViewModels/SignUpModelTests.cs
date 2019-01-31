@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
@@ -14,16 +15,61 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             Assert.AreEqual(model.Title, "sign_up_title");
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.PASSWORD, true, "email_required_error_message")]
-        [TestCase("asd", TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.PASSWORD, true, "email_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.PASSWORD, true, "first_name_required_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.FIRSTNAME, TestDataHelper.EMPTY_STRING, TestDataHelper.NAME, TestDataHelper.PASSWORD, true, "last_name_required_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, true, "organization_name_required_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.EMPTY_STRING, true, "password_required_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.NAME, "asd", true, "password_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.EMAIL, TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.NAME, TestDataHelper.PASSWORD, false, "you_must_accept_terms_error_message")]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
+                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
+        {
+            "email_required_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
+            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
+            {
+                "email_is_not_valid_error_message"
+            })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_1,
+            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
+            {
+                "first_name_required_error_message"
+            })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.EMPTY_STRING,
+            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
+            {
+                "last_name_required_error_message"
+            })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
+            TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
+            {
+                "organization_name_required_error_message"
+            })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
+            TestDataHelper.STRING_3, TestDataHelper.EMPTY_STRING, TestDataHelper.BOOL_TRUE, new string[]
+            {
+                "password_required_error_message"
+            })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
+            TestDataHelper.STRING_3, TestDataHelper.STRING, TestDataHelper.BOOL_TRUE, new string[]
+            {
+                "password_is_not_valid_error_message"
+            })]
+        [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
+            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_FALSE, new string[]
+            {
+                "you_must_accept_terms_error_message"
+            })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
+            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_FALSE, new string[]
+            {
+                "email_is_not_valid_error_message",
+                "you_must_accept_terms_error_message"
+            })]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
+            TestDataHelper.STRING_3, TestDataHelper.STRING, TestDataHelper.BOOL_TRUE, new string[]
+            {
+                "email_required_error_message",
+                "password_is_not_valid_error_message"
+            })]
         public void SignUpModel_Validates_AddsErrorMessages(string email, string firstName, string lastName,
-                                                           string organizationName, string password, bool isTermsAccepted, string errorMessage)
+                                                           string organizationName, string password, bool isTermsAccepted,
+                                                           string[] errorMessage)
         {
             var model = GetModel();
             model.Email = email;
@@ -34,7 +80,10 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             model.IsTermsAccepted = isTermsAccepted;
 
             Assert.False(model.IsValid());
-            Assert.True(model.InputErrorMessages.Contains(errorMessage));
+            foreach (var message in errorMessage)
+            {
+                Assert.True(model.InputErrorMessages.Contains(message));
+            }
         }
 
         [Test]

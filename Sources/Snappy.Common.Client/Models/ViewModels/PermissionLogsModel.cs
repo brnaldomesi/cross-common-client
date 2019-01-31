@@ -1,4 +1,4 @@
-﻿using System;
+﻿using NodaTime;
 
 using Snappy.Common.Client.Helpers;
 
@@ -15,7 +15,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public string Permission { get; set; }
         public bool IsAllowed { get; set; }
-        public DateTime CreatedAt { get; set; }
+        public Instant CreatedAt { get; set; }
 
         public PermissionLogsModel()
         {

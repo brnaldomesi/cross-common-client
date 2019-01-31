@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
@@ -14,14 +15,47 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             Assert.AreEqual(model.Title, "accept_invite_title");
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.LASTNAME, TestDataHelper.PASSWORD,TestDataHelper.PASSWORD, "first_name_required_error_message")]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD,TestDataHelper.PASSWORD, "last_name_required_error_message")]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.EMPTY_STRING,TestDataHelper.PASSWORD, "password_required_error_message")]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.PASSWORD,TestDataHelper.EMPTY_STRING, "password_required_error_message")]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, "asd",TestDataHelper.PASSWORD, "password_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.PASSWORD,"asd", "password_is_not_valid_error_message")]
-        [TestCase(TestDataHelper.FIRSTNAME, TestDataHelper.LASTNAME, TestDataHelper.PASSWORD,"asd", "re_entered_password_does_not_match_error_message")]
-        public void InviteAcceptModel_Validates_AddsErrorMessages(string firstName, string lastName, string newPassword, string reEnterNewPassword,string errorMessage)
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_1, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, new string[]
+        {
+            "first_name_required_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD, new string[]
+        {
+            "last_name_required_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, new string[]
+        {
+            "new_password_required_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.PASSWORD, TestDataHelper.EMPTY_STRING, new string[]
+        {
+            "re_enter_password_required_error_message",
+            "re_enter_password_is_not_valid_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.STRING, TestDataHelper.PASSWORD, new string[]
+        {
+            "new_password_is_not_valid_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.PASSWORD, TestDataHelper.STRING, new string[]
+        {
+            "re_enter_password_is_not_valid_error_message",
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD_1, new string[]
+        {
+            "re_entered_password_does_not_match_error_message"
+        })]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.EMPTY_STRING, TestDataHelper.STRING, TestDataHelper.PASSWORD, new string[]
+        {
+            "first_name_required_error_message",
+            "last_name_required_error_message",
+            "new_password_is_not_valid_error_message"
+        })]
+        public void InviteAcceptModel_Validates_InputErrorMessages(string firstName, string lastName, string newPassword,
+                                                                   string reEnterNewPassword, string[] errorMessage)
         {
             var model = GetModel();
             model.FirstName = firstName;
@@ -30,7 +64,10 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
             model.ReEnterNewPassword = reEnterNewPassword;
 
             Assert.False(model.IsValid());
-            Assert.True(model.InputErrorMessages.Contains(errorMessage));
+            foreach (var message in errorMessage)
+            {
+                Assert.True(model.InputErrorMessages.Contains(message));
+            }
         }
 
         [Test]
