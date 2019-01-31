@@ -15,4 +15,8 @@
     <ProjectReference Include="..\..\Sources\Snappy.Common.Client\Snappy.Common.Client.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Requests\Admin\" />
+  </ItemGroup>
+
 </Project>
