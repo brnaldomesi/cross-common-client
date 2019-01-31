@@ -9,9 +9,9 @@ namespace Snappy.Common.Client.Tests.Models.InputModels
     public class CheckboxInputModelTests
     {
         [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, true, true, true)]
-        [TestCase(TestDataHelper.STRING_2, "label", true, false, false)]
-        [TestCase("name", "label", true, true, false)]
-        [TestCase("name", "label", false, false, false)]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, true, false, false)]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, true, true, false)]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, false, false, false)]
         public void CheckboxInputModel(string name, string labelKey, bool isRequired, bool isReadOnly, bool value)
         {
             var model = new CheckboxInputModel(name, labelKey, isRequired, isReadOnly, value);
