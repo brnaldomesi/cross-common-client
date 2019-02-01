@@ -2,7 +2,7 @@
 
 using NUnit.Framework;
 
-using Snappy.Common.Client.Models.Requests.Membership;
+using Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client;
 using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.Requests.Membership
@@ -13,20 +13,18 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void IntegrationTokenShowSecretRequest_Constructor()
         {
-            var request = new IntegrationTokenShowSecretRequest(TestDataHelper.UID, TestDataHelper.UID_1);
+            var request = new IntegrationClientSecretRequest(TestDataHelper.UID);
 
-            Assert.AreEqual(TestDataHelper.UID, request.IntegrationUid);
-            Assert.AreEqual(TestDataHelper.UID_1, request.TokenUid);
+            Assert.AreEqual(TestDataHelper.UID, request.ClientUid);
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.UID_1)]
-        [TestCase(TestDataHelper.UID, TestDataHelper.EMPTY_STRING)]
-        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING)]
-        public void IntegrationTokenShowSecretRequest_Argument_Validations(string integrationUid, string tokenUid)
+        [TestCase(TestDataHelper.EMPTY_STRING)]
+        [TestCase(TestDataHelper.UID)]
+        public void IntegrationTokenShowSecretRequest_Argument_Validations(string clientUid)
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                new IntegrationTokenShowSecretRequest(integrationUid, tokenUid);
+                new IntegrationClientSecretRequest(clientUid);
             });
         }
     }

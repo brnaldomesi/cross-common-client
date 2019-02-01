@@ -2,7 +2,7 @@
 
 using NUnit.Framework;
 
-using Snappy.Common.Client.Models.Requests.Membership;
+using Snappy.Common.Client.Models.Requests.Membership.Organization.Integration;
 using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.Requests.Membership
