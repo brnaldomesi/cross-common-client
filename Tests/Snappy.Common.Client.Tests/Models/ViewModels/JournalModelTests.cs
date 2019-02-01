@@ -8,7 +8,7 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
     public class JournalModelTests
     {
         [Test]
-        public void JournalModel_has_title()
+        public void JournalModel_title()
         {
             var model = GetModel();
             Assert.AreEqual(model.Title, "journal_title");

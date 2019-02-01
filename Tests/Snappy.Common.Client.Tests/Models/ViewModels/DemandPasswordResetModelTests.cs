@@ -1,53 +1,42 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    class DemandPasswordResetModelTests
+    class DemandPasswordResetModelTests : BaseViewModelTest<DemandPasswordResetModel>
     {
-        [Test]
-        public void DemandPasswordResetModel_has_title()
-        {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "demand_password_reset_title");
-        }
+        public DemandPasswordResetModel SystemUnderTest { get; set; }
 
-        [TestCase(TestDataHelper.STRING,new string[]
+        [SetUp]
+        public void run_before_every_test()
         {
-            "email_is_not_valid_error_message"
-        })]
-        [TestCase(TestDataHelper.EMPTY_STRING, new string[]
-        {
-            "email_required_error_message"
-        })]
-        public void _Validates_InputErrorMessages(string email, string[] errorMessage)
-        {
-            var model = GetModel();
-            model.Email = email;
-
-            Assert.False(model.IsValid());
-            foreach (var message in errorMessage)
-            {
-                Assert.True(model.InputErrorMessages.Contains(message));
-            }
+            SystemUnderTest = GetModel();
         }
 
         [Test]
-        public void DemandPasswordResetModel_has_EmailInputModel()
+        public void DemandPasswordResetModel_title()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.EmailInput.Name, "Email");
-            Assert.AreEqual(model.EmailInput.LabelKey, "email");
-            Assert.True(model.EmailInput.IsRequired);
-            Assert.IsEmpty(model.EmailInput.Value);
+            Assert.AreEqual(SystemUnderTest.Title, "demand_password_reset_title");
         }
 
-        private static DemandPasswordResetModel GetModel()
+        [TestCase(TestDataHelper.STRING, new[] { "email_is_not_valid_error_message" })]
+        [TestCase(TestDataHelper.EMPTY_STRING, new[] { "email_required_error_message" })]
+        public void DemandPasswordResetModel_InputErrorMessages(string email, string[] errorMessage)
         {
-            return new DemandPasswordResetModel();
+            SystemUnderTest.Email = email;
+
+            AssertModelValidation(SystemUnderTest.IsValid());
+            AssertInputErrorMessages(SystemUnderTest.InputErrorMessages, errorMessage);
+        }
+
+        [Test]
+        public void DemandPasswordResetModel_EmailInputModel()
+        {
+            AssertInputModel(SystemUnderTest.EmailInput, "Email", "email", true);
         }
     }
 }

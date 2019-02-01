@@ -1,32 +1,31 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    public class UserDetailBaseModelTests
+    public class UserDetailBaseModelTests : BaseViewModelTest<UserDetailBaseModel>
     {
-        [Test]
-        public void UserDetailBaseModel_has_title()
+        public UserDetailBaseModel SystemUnderTest { get; set; }
+
+        [SetUp]
+        public void run_before_every_test()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "user_detail_title");
+            SystemUnderTest = GetModel();
         }
 
         [Test]
-        public void UserDetailBaseModel_has_IsActiveInput()
+        public void UserDetailBaseModel_title()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.IsActiveInput.Name, "IsActive");
-            Assert.AreEqual(model.IsActiveInput.LabelKey, "is_active");
-            Assert.False(model.IsActiveInput.IsRequired);
-            Assert.True(model.IsActiveInput.IsReadOnly);
+            Assert.AreEqual(SystemUnderTest.Title, "user_detail_title");
         }
 
-        private static UserDetailBaseModel GetModel()
+        [Test]
+        public void UserDetailBaseModel_IsActiveInput()
         {
-            return new UserDetailBaseModel();
+            AssertCheckBoxInputModel(SystemUnderTest.IsActiveInput, "IsActive", "is_active", false);
         }
     }
 }

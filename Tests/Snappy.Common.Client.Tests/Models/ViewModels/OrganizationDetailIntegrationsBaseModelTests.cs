@@ -6,9 +6,9 @@ using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    public class ActiveTokensDataModelTests : BaseViewModelTest<ActiveTokensDataModel>
+    public class OrganizationDetailIntegrationsBaseModelTests : BaseViewModelTest<OrganizationDetailIntegrationsBaseModel>
     {
-        public ActiveTokensDataModel SystemUnderTest { get; set; }
+        public OrganizationDetailIntegrationsBaseModel SystemUnderTest { get; set; }
 
         [SetUp]
         public void run_before_every_test()
@@ -17,9 +17,9 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
         }
 
         [Test]
-        public void ActiveTokensDataModel_title()
+        public void OrganizationDetailIntegrationsBaseModel_title()
         {
-            Assert.AreEqual(SystemUnderTest.Title, "active_tokens_table_title");
+            Assert.AreEqual(SystemUnderTest.Title, "organization_integrations_title");
         }
     }
 }

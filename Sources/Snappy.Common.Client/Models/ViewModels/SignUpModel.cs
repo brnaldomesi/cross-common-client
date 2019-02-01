@@ -29,7 +29,7 @@ namespace Snappy.Common.Client.Models.ViewModels
             LastNameInput = new InputModel("LastName", "last_name", true);
             OrganizationNameInput = new LongInputModel("OrganizationName", "organization_name", true);
             PasswordInput = new PasswordInputModel("Password", "password", true);
-            IsTermsAcceptedInput = new CheckboxInputModel("IsTermsAccepted", "accept_terms", true);
+            IsTermsAcceptedInput = new CheckboxInputModel("IsTermsAccepted", "is_term_accepted", true);
         }
 
         public override void SetInputModelValues()

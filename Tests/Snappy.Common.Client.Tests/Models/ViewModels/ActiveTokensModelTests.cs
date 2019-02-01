@@ -1,22 +1,25 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    public class ActiveTokensModelTests
+    public class ActiveTokensModelTests : BaseViewModelTest<ActiveTokensModel>
     {
-        [Test]
-        public void ActiveTokensModel_has_title()
+        public ActiveTokensModel SystemUnderTest { get; set; }
+
+        [SetUp]
+        public void run_before_every_test()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "active_tokens_title");
+            SystemUnderTest = GetModel();
         }
 
-        private static ActiveTokensModel GetModel()
+        [Test]
+        public void ActiveTokensModel_title()
         {
-            return new ActiveTokensModel();
+            Assert.AreEqual(SystemUnderTest.Title, "active_tokens_title");
         }
     }
 }

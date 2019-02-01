@@ -1,22 +1,25 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    public class TokenRequestLogsModelTests
+    public class TokenRequestLogsModelTests:BaseViewModelTest<TokenRequestLogsModel>
     {
-        [Test]
-        public void TokenRequestLogsModel_has_title()
+        public TokenRequestLogsModel SystemUnderTest { get; set; }
+
+        [SetUp]
+        public void run_before_every_test()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "token_request_logs_title");
+            SystemUnderTest = GetModel();
         }
 
-        private static TokenRequestLogsModel GetModel()
+        [Test]
+        public void TokenRequestLogsModel_title()
         {
-            return new TokenRequestLogsModel();
+            Assert.AreEqual(SystemUnderTest.Title, "token_request_logs_title");
         }
     }
 }

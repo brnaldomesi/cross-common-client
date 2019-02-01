@@ -1,22 +1,25 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    public class IntegrationDetailModelTests
+    public class IntegrationDetailModelTests : BaseViewModelTest<IntegrationDetailModel>
     {
-        [Test]
-        public void IntegrationDetailModel_has_title()
+        public IntegrationDetailModel SystemUnderTest { get; set; }
+
+        [SetUp]
+        public void run_before_every_test()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "integration_detail_title");
+            SystemUnderTest = GetModel();
         }
 
-        private static IntegrationDetailModel GetModel()
+        [Test]
+        public void IntegrationDetailModel_title()
         {
-            return new IntegrationDetailModel();
+            Assert.AreEqual(SystemUnderTest.Title, "integration_detail_title");
         }
     }
 }

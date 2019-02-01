@@ -12,15 +12,15 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public EmailInputModel EmailInput { get; }
         public InputModel FirstNameInput { get; }
-        public InputModel LastNameInput{ get; }
+        public InputModel LastNameInput { get; }
 
         public InviteModel()
         {
-            Title = Localizer.Localize("invite_title");
+            Title = Localizer.Localize("user_invite_title");
 
-            EmailInput = new EmailInputModel("Email","email",true);
-            FirstNameInput = new InputModel("FirstName","first_name",true);
-            LastNameInput = new InputModel("LastName","last_name",true);
+            EmailInput = new EmailInputModel("Email", "email", true);
+            FirstNameInput = new InputModel("FirstName", "first_name", true);
+            LastNameInput = new InputModel("LastName", "last_name", true);
         }
 
         public override void SetInputModelValues()

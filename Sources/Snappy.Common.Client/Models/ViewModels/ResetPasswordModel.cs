@@ -6,9 +6,15 @@ namespace Snappy.Common.Client.Models.ViewModels
 {
     public sealed class ResetPasswordModel : BaseModel
     {
+        public string UserUid { get; set; }
+        public string Token { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
         public string ReEnterPassword { get; set; }
 
+        public HiddenInputModel UserUidInput { get; }
+        public HiddenInputModel TokenInput { get; }
+        public HiddenInputModel EmailInput { get; }
         public PasswordInputModel PasswordInput { get; }
         public PasswordInputModel ReEnterPasswordInput { get; }
 
@@ -16,6 +22,9 @@ namespace Snappy.Common.Client.Models.ViewModels
         {
             Title = Localizer.Localize("reset_password_title");
 
+            UserUidInput = new HiddenInputModel("UserUidInput", "user_uid_input");
+            TokenInput = new HiddenInputModel("TokenInput", "token_input");
+            EmailInput = new HiddenInputModel("EmailInput", "email");
             PasswordInput = new PasswordInputModel("Password", "password", true);
             ReEnterPasswordInput = new PasswordInputModel("ReEnterNewPassword", "re_enter_password", true);
         }

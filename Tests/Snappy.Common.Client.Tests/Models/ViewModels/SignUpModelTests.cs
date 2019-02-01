@@ -1,154 +1,107 @@
 ﻿using NUnit.Framework;
-
+using Snappy.Common.Client.Models.InputModels;
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    class SignUpModelTests
+    public class SignUpModelTests : BaseViewModelTest<SignUpModel>
     {
-        [Test]
-        public void SignUpModel_has_title()
+        public SignUpModel SystemUnderTest { get; set; }
+
+        [SetUp]
+        public void run_before_every_test()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "sign_up_title");
+            SystemUnderTest = GetModel();
+        }
+
+        [Test]
+        public void SignUpModel_Title()
+        {
+            Assert.AreEqual(SystemUnderTest.Title, "sign_up_title");
         }
 
         [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
-                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
-        {
-            "email_required_error_message"
-        })]
+                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE,
+                  new[] { "email_required_error_message" })]
         [TestCase(TestDataHelper.STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
-            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
-            {
-                "email_is_not_valid_error_message"
-            })]
+                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE,
+                  new[] { "email_is_not_valid_error_message" })]
         [TestCase(TestDataHelper.EMAIL, TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_1,
-            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
-            {
-                "first_name_required_error_message"
-            })]
+                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE,
+                  new[] { "first_name_required_error_message" })]
         [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.EMPTY_STRING,
-            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
-            {
-                "last_name_required_error_message"
-            })]
+                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE,
+                  new[] { "last_name_required_error_message" })]
         [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
-            TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE, new string[]
-            {
-                "organization_name_required_error_message"
-            })]
+                  TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, TestDataHelper.BOOL_TRUE,
+                  new[] { "organization_name_required_error_message" })]
         [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
-            TestDataHelper.STRING_3, TestDataHelper.EMPTY_STRING, TestDataHelper.BOOL_TRUE, new string[]
-            {
-                "password_required_error_message"
-            })]
+                  TestDataHelper.STRING_3, TestDataHelper.EMPTY_STRING, TestDataHelper.BOOL_TRUE,
+                  new[] { "password_required_error_message" })]
         [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
-            TestDataHelper.STRING_3, TestDataHelper.STRING, TestDataHelper.BOOL_TRUE, new string[]
-            {
-                "password_is_not_valid_error_message"
-            })]
+                  TestDataHelper.STRING_3, TestDataHelper.STRING, TestDataHelper.BOOL_TRUE,
+                  new[] { "password_is_not_valid_error_message" })]
         [TestCase(TestDataHelper.EMAIL, TestDataHelper.STRING, TestDataHelper.STRING_1,
-            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_FALSE, new string[]
-            {
-                "you_must_accept_terms_error_message"
-            })]
+                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_FALSE,
+                  new[] { "you_must_accept_terms_error_message" })]
         [TestCase(TestDataHelper.STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
-            TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_FALSE, new string[]
-            {
-                "email_is_not_valid_error_message",
-                "you_must_accept_terms_error_message"
-            })]
+                  TestDataHelper.STRING_3, TestDataHelper.PASSWORD, TestDataHelper.BOOL_FALSE,
+                  new[] { "email_is_not_valid_error_message", "you_must_accept_terms_error_message" })]
         [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING, TestDataHelper.STRING_1,
-            TestDataHelper.STRING_3, TestDataHelper.STRING, TestDataHelper.BOOL_TRUE, new string[]
-            {
-                "email_required_error_message",
-                "password_is_not_valid_error_message"
-            })]
-        public void SignUpModel_Validates_AddsErrorMessages(string email, string firstName, string lastName,
-                                                           string organizationName, string password, bool isTermsAccepted,
-                                                           string[] errorMessage)
+                  TestDataHelper.STRING_3, TestDataHelper.STRING, TestDataHelper.BOOL_TRUE,
+                  new[] { "email_required_error_message", "password_is_not_valid_error_message" })]
+        public void SignUpModel_InputErrorMessages(string email, string firstName, string lastName,
+                                                   string organizationName, string password, bool isTermsAccepted,
+                                                   string[] errorMessage)
         {
-            var model = GetModel();
-            model.Email = email;
-            model.FirstName = firstName;
-            model.LastName = lastName;
-            model.OrganizationName = organizationName;
-            model.Password = password;
-            model.IsTermsAccepted = isTermsAccepted;
+            SystemUnderTest.Email = email;
+            SystemUnderTest.FirstName = firstName;
+            SystemUnderTest.LastName = lastName;
+            SystemUnderTest.OrganizationName = organizationName;
+            SystemUnderTest.Password = password;
+            SystemUnderTest.IsTermsAccepted = isTermsAccepted;
 
-            Assert.False(model.IsValid());
-            foreach (var message in errorMessage)
-            {
-                Assert.True(model.InputErrorMessages.Contains(message));
-            }
+            AssertModelValidation(SystemUnderTest.IsValid());
+            AssertInputErrorMessages(SystemUnderTest.InputErrorMessages, errorMessage);
         }
 
         [Test]
-        public void SignUpModel_has_EmailInputModel()
+        public void SignUpModel_EmailInputModel()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.EmailInput.Name, "Email");
-            Assert.AreEqual(model.EmailInput.LabelKey, "email");
-            Assert.True(model.EmailInput.IsRequired);
-            Assert.IsEmpty(model.EmailInput.Value);
+            AssertInputModel((InputModel) SystemUnderTest.EmailInput, "Email", "email", true);
         }
 
         [Test]
-        public void SignUpModel_has_FirstNameInputModel()
+        public void SignUpModel_FirstNameInputModel()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.FirstNameInput.Name, "FirstName");
-            Assert.AreEqual(model.FirstNameInput.LabelKey, "first_name");
-            Assert.True(model.FirstNameInput.IsRequired);
-            Assert.IsEmpty(model.FirstNameInput.Value);
+            AssertInputModel(SystemUnderTest.FirstNameInput, "FirstName", "first_name", true);
         }
 
         [Test]
-        public void SignUpModel_has_LastNameInputModel()
+        public void SignUpModel_LastNameInputModel()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.LastNameInput.Name, "LastName");
-            Assert.AreEqual(model.LastNameInput.LabelKey, "last_name");
-            Assert.True(model.LastNameInput.IsRequired);
-            Assert.IsEmpty(model.LastNameInput.Value);
+            AssertInputModel(SystemUnderTest.LastNameInput, "LastName", "last_name", true);
         }
 
         [Test]
-        public void SignUpModel_has_OrganizationNameInputModel()
+        public void SignUpModel_OrganizationNameInputModel()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.OrganizationNameInput.Name, "OrganizationName");
-            Assert.AreEqual(model.OrganizationNameInput.LabelKey, "organization_name");
-            Assert.True(model.OrganizationNameInput.IsRequired);
-            Assert.IsEmpty(model.OrganizationNameInput.Value);
+            AssertInputModel(SystemUnderTest.OrganizationNameInput, "OrganizationName", "organization_name", true);
         }
 
         [Test]
-        public void SignUpModel_has_PasswordInputModel()
+        public void SignUpModel_PasswordInputModel()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.PasswordInput.Name, "Password");
-            Assert.AreEqual(model.PasswordInput.LabelKey, "password");
-            Assert.True(model.PasswordInput.IsRequired);
-            Assert.IsEmpty(model.PasswordInput.Value);
+            AssertInputModel(SystemUnderTest.PasswordInput, "Password", "password", true);
         }
 
         [Test]
-        public void SignUpModel_has_IsTermsAcceptedInputModel()
+        public void SignUpModel_IsTermsAcceptedInputModel()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.IsTermsAcceptedInput.Name, "IsTermsAccepted");
-            Assert.AreEqual(model.IsTermsAcceptedInput.LabelKey, "accept_terms");
-            Assert.True(model.IsTermsAcceptedInput.IsRequired);
-            Assert.False(model.IsTermsAcceptedInput.Value);
-        }
-
-        private static SignUpModel GetModel()
-        {
-            return new SignUpModel();
+            AssertCheckBoxInputModel(SystemUnderTest.IsTermsAcceptedInput, "IsTermsAccepted", "is_term_accepted", true);
         }
     }
 }

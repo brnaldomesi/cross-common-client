@@ -1,53 +1,47 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture()]
-    class IntegrationCreateModelTests
+    public class IntegrationCreateModelTests : BaseViewModelTest<IntegrationCreateModel>
     {
-        [Test]
-        public void IntegrationCreateModel_has_title()
-        {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "integration_create_title");
-        }
+        public IntegrationCreateModel SystemUnderTest { get; set; }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, "integration_name_required_error_message")]
-        public void IntegrationCreateModel_Validates_AddsErrorMessages(string integrationName, string errorMessage)
+        [SetUp]
+        public void run_before_every_test()
         {
-            var model = GetModel();
-            model.IntegrationName = integrationName;
-
-            Assert.False(model.IsValid());
-            Assert.True(model.InputErrorMessages.Contains(errorMessage));
+            SystemUnderTest = GetModel();
         }
 
         [Test]
-        public void IntegrationCreateModel_has_IntegrationNameInputModel()
+        public void IntegrationCreateModel_title()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.IntegrationNameInput.Name, "IntegrationName");
-            Assert.AreEqual(model.IntegrationNameInput.LabelKey, "integration_name");
-            Assert.True(model.IntegrationNameInput.IsRequired);
-            Assert.IsEmpty(model.IntegrationNameInput.Value);
+            Assert.AreEqual(SystemUnderTest.Title, "integration_create_title");
+        }
+
+        [TestCase(TestDataHelper.EMPTY_STRING, new[] { "integration_name_required_error_message" })]
+        public void IntegrationCreateModel_InputErrorMessages(string integrationName, string[] errorMessage)
+        {
+            SystemUnderTest.IntegrationName = integrationName;
+
+            AssertModelValidation(SystemUnderTest.IsValid());
+            AssertInputErrorMessages(SystemUnderTest.InputErrorMessages, errorMessage);
         }
 
         [Test]
-        public void IntegrationCreateModel_has_DescriptionInputModel()
+        public void IntegrationCreateModel_IntegrationNameInputModel()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.DescriptionInput.Name, "Description");
-            Assert.AreEqual(model.DescriptionInput.LabelKey, "description");
-            Assert.False(model.DescriptionInput.IsRequired);
-            Assert.IsEmpty(model.DescriptionInput.Value);
+            AssertInputModel(SystemUnderTest.IntegrationNameInput, "IntegrationName", "integration_name", true);
         }
 
-        private static IntegrationCreateModel GetModel()
+        [Test]
+        public void IntegrationCreateModel_DescriptionInputModel()
         {
-            return new IntegrationCreateModel();
+            AssertInputModel(SystemUnderTest.DescriptionInput, "Description", "description", false);
         }
     }
 }

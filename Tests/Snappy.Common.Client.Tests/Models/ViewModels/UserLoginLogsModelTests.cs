@@ -1,22 +1,25 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.ViewModels;
+using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
     [TestFixture]
-    public class UserLoginLogsModelTests
+    public class UserLoginLogsModelTests : BaseViewModelTest<UserLoginLogsModel>
     {
-        [Test]
-        public void UserLoginLogsModel_has_title()
+        public UserLoginLogsModel SystemUnderTest { get; set; }
+
+        [SetUp]
+        public void run_before_every_test()
         {
-            var model = GetModel();
-            Assert.AreEqual(model.Title, "user_login_logs_title");
+            SystemUnderTest = GetModel();
         }
 
-        private static UserLoginLogsModel GetModel()
+        [Test]
+        public void UserLoginLogsModel_title()
         {
-            return new UserLoginLogsModel();
+            Assert.AreEqual(SystemUnderTest.Title, "user_login_logs_title");
         }
     }
 }
