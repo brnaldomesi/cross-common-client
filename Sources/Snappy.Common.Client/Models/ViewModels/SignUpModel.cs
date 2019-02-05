@@ -9,10 +9,12 @@ namespace Snappy.Common.Client.Models.ViewModels
         public string Email { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public string OrganizationUid { get; set; }
         public string OrganizationName { get; set; }
         public string Password { get; set; }
         public bool IsTermsAccepted { get; set; }
 
+        public HiddenInputModel OrganizationUidInput { get; }
         public EmailInputModel EmailInput { get; }
         public InputModel FirstNameInput { get; }
         public InputModel LastNameInput { get; }
@@ -24,6 +26,7 @@ namespace Snappy.Common.Client.Models.ViewModels
         {
             Title = Localizer.Localize("sign_up_title");
 
+            OrganizationUidInput = new HiddenInputModel("OrganizationUid", "organization_uid");
             EmailInput = new EmailInputModel("Email", "email", true);
             FirstNameInput = new InputModel("FirstName", "first_name", true);
             LastNameInput = new InputModel("LastName", "last_name", true);

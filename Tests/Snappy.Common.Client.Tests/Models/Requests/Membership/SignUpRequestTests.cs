@@ -13,26 +13,26 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void SignUpRequest_Constructor()
         {
-            var request = new SignUpRequest(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.STRING_2,
+            var request = new SignUpRequest(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.UID,
                                                      TestDataHelper.EMAIL, TestDataHelper.PASSWORD);
             Assert.AreEqual(TestDataHelper.STRING, request.FirstName);
             Assert.AreEqual(TestDataHelper.STRING_1, request.LastName);
             Assert.AreEqual(TestDataHelper.EMAIL, request.Email);
-            Assert.AreEqual(TestDataHelper.STRING_2, request.OrganizationName);
+            Assert.AreEqual(TestDataHelper.UID, request.OrganizationUid);
             Assert.AreEqual(TestDataHelper.PASSWORD, request.Password);
         }
 
-        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_1, TestDataHelper.STRING_2, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.STRING, TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_2, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.STRING_1, TestDataHelper.UID, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.EMPTY_STRING, TestDataHelper.UID, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
         [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.EMPTY_STRING, TestDataHelper.EMAIL, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.STRING_2, "testtest.com", TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.STRING_2, TestDataHelper.EMAIL, "wrongPass")]
-        public void SignUpRequest_Argument_Validations(string firstName, string lastName, string email,
-                                                       string organizationName, string password)
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.UID, "testtest.com", TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.STRING, TestDataHelper.STRING_1, TestDataHelper.UID, TestDataHelper.EMAIL, "wrongPass")]
+        public void SignUpRequest_Argument_Validations(string firstName, string lastName,string organizationUid,
+                                                       string email, string password)
         {
             Assert.Throws<ArgumentException>(() =>
             {
-                new SignUpRequest(firstName, lastName, email, organizationName, password);
+                new SignUpRequest(firstName, lastName, organizationUid, email, password);
             });
         }
     }

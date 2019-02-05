@@ -8,12 +8,12 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
     [TestFixture]
     public class PermissionLogsRequestTests
     {
-        [Test]
-        public void PermissionLogsRequest_Constructor()
-        {
-            var request = new PermissionLogsRequest(TestDataHelper.POSITIVE_NUMBER);
+        //[Test]
+        //public void PermissionLogsRequest_Constructor()
+        //{
+        //    var request = new PermissionLogsRequest(TestDataHelper.POSITIVE_NUMBER);
 
-            Assert.AreEqual(TestDataHelper.POSITIVE_NUMBER, request.CurrentUserId);
-        }
+        //    Assert.AreEqual(TestDataHelper.POSITIVE_NUMBER, request.CurrentUserId);
+        //}
     }
 }

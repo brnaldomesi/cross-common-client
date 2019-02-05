@@ -10,10 +10,10 @@ namespace Snappy.Common.Client.Models.Requests.Membership.Organization.User
         public string FirstName { get; }
         public string LastName { get; }
         public string Email { get; }
-        public string OrganizationName { get; }
+        public string OrganizationUid { get; }
         public string Password { get; }
 
-        public SignUpRequest(string firstName, string lastName, string organizationName, string email, string password)
+        public SignUpRequest(string firstName, string lastName, string organizationUid, string email, string password)
         {
             if (firstName.IsEmpty())
             {
@@ -25,9 +25,9 @@ namespace Snappy.Common.Client.Models.Requests.Membership.Organization.User
                 throw new ArgumentException(nameof(lastName));
             }
 
-            if (organizationName.IsEmpty())
+            if (organizationUid.IsNotUid())
             {
-                throw new ArgumentException(nameof(organizationName));
+                throw new ArgumentException(nameof(organizationUid));
             }
 
             if (email.IsNotEmail())
@@ -42,7 +42,7 @@ namespace Snappy.Common.Client.Models.Requests.Membership.Organization.User
 
             FirstName = firstName;
             LastName = lastName;
-            OrganizationName = organizationName;
+            OrganizationUid = organizationUid;
             Email = email;
             Password = password;
         }

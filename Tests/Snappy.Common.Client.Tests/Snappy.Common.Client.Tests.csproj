@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\..\Services\Common\snappy.service.common\Sources\Snappy.Service.Common\Snappy.Service.Common.csproj" />
     <ProjectReference Include="..\..\..\snappy.common\Sources\Snappy.Common\Snappy.Common.csproj" />
     <ProjectReference Include="..\..\Sources\Snappy.Common.Client\Snappy.Common.Client.csproj" />
   </ItemGroup>
