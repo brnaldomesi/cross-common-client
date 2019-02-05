@@ -1,4 +1,6 @@
-﻿namespace Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client.Token
+﻿using Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client.Base;
+
+namespace Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client.Token
 {
     public class IntegrationActiveTokenReadRequest : IntegrationClientBaseRequest
     {

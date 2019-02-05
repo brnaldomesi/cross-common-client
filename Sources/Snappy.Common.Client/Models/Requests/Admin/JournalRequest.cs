@@ -1,4 +1,4 @@
-﻿namespace Snappy.Common.Client.Models.Requests
+﻿namespace Snappy.Common.Client.Models.Requests.Admin
 {
     public sealed class JournalRequest : BaseAuthenticatedRequest
     {

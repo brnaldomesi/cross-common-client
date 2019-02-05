@@ -18,7 +18,7 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
             Assert.AreEqual(TestDataHelper.STRING, request.FirstName);
             Assert.AreEqual(TestDataHelper.STRING_1, request.LastName);
             Assert.AreEqual(TestDataHelper.EMAIL, request.Email);
-            Assert.AreEqual(TestDataHelper.UID, request.OrganizationUid);
+            Assert.AreEqual(TestDataHelper.UID, request.OrganizationName);
             Assert.AreEqual(TestDataHelper.PASSWORD, request.Password);
         }
 

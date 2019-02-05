@@ -1,8 +1,7 @@
 ﻿using System;
-
 using Snappy.Common.Helpers;
 
-namespace Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client
+namespace Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client.Base
 {
     public class IntegrationClientBaseRequest
     {

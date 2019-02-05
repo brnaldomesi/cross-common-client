@@ -26,7 +26,7 @@ namespace Snappy.Common.Client.Models.ViewModels
         {
             Title = Localizer.Localize("sign_up_title");
 
-            OrganizationUidInput = new HiddenInputModel("OrganizationUid", "organization_uid");
+            OrganizationUidInput = new HiddenInputModel("OrganizationName", "organization_uid");
             EmailInput = new EmailInputModel("Email", "email", true);
             FirstNameInput = new InputModel("FirstName", "first_name", true);
             LastNameInput = new InputModel("LastName", "last_name", true);

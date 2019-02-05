@@ -1,4 +1,6 @@
-﻿namespace Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client
+﻿using Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client.Base;
+
+namespace Snappy.Common.Client.Models.Requests.Membership.Organization.Integration.Client
 {
     public class IntegrationClientChangeActivation : IntegrationClientBaseRequest
     {

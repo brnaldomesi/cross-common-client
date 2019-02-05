@@ -22,7 +22,7 @@ namespace Snappy.Common.Client.Models.ViewModels
         {
             Title = Localizer.Localize("user_login_logs_title");
 
-            OrganizationUidInput = new HiddenInputModel("OrganizationUid", "organization_uid");
+            OrganizationUidInput = new HiddenInputModel("OrganizationName", "organization_uid");
         }
     }
 }

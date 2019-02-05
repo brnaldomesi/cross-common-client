@@ -17,7 +17,7 @@ namespace Snappy.Common.Client.Models.ViewModels
         {
             Title = Localizer.Localize("organization_integrations_title");
 
-            OrganizationUidInput = new HiddenInputModel("OrganizationUid", "organization_uid");
+            OrganizationUidInput = new HiddenInputModel("OrganizationName", "organization_uid");
         }
     }
 }

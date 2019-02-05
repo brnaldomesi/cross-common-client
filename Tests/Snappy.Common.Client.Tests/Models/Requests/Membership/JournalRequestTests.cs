@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 
 using Snappy.Common.Client.Models.Requests;
+using Snappy.Common.Client.Models.Requests.Admin;
 using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Tests.Models.Requests.Membership
