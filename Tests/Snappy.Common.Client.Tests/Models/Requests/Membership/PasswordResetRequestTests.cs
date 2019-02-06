@@ -13,20 +13,20 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void PasswordResetRequest_Constructor()
         {
-            var request = new PasswordResetRequest(TestDataHelper.UID, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD);
+            var request = new PasswordResetRequest(TestDataHelper.Uid, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD);
 
-            Assert.AreEqual(TestDataHelper.UID, request.UserUid);
+            Assert.AreEqual(TestDataHelper.Uid, request.UserUid);
             Assert.AreEqual(TestDataHelper.PASSWORD, request.Password);
             Assert.AreEqual(TestDataHelper.PASSWORD, request.ReEnterPassword);
         }
 
         [TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.UID, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.UID, TestDataHelper.PASSWORD, TestDataHelper.EMPTY_STRING)]
+        [TestCase(TestDataHelper.Uid, TestDataHelper.EMPTY_STRING, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.Uid, TestDataHelper.PASSWORD, TestDataHelper.EMPTY_STRING)]
         [TestCase(TestDataHelper.STRING, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.UID, TestDataHelper.STRING, TestDataHelper.PASSWORD)]
-        [TestCase(TestDataHelper.UID, TestDataHelper.PASSWORD, TestDataHelper.STRING)]
-        [TestCase(TestDataHelper.UID, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD_1)]
+        [TestCase(TestDataHelper.Uid, TestDataHelper.STRING, TestDataHelper.PASSWORD)]
+        [TestCase(TestDataHelper.Uid, TestDataHelper.PASSWORD, TestDataHelper.STRING)]
+        [TestCase(TestDataHelper.Uid, TestDataHelper.PASSWORD, TestDataHelper.PASSWORD_1)]
         public void PasswordResetRequest_Argument_Validations(string userUid, string password, string reEnterPassword)
         {
             Assert.Throws<ArgumentException>(() =>

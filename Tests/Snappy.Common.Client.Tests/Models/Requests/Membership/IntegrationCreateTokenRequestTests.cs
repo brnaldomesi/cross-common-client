@@ -13,9 +13,9 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         //[Test]
         //public void IntegrationCreateTokenRequest_Constructor()
         //{
-        //    var request = new IntegrationCreateTokenRequest(TestDataHelper.UID);
+        //    var request = new IntegrationCreateTokenRequest(TestDataHelper.Uid);
 
-        //    Assert.AreEqual(TestDataHelper.UID, request.IntegrationUid);
+        //    Assert.AreEqual(TestDataHelper.Uid, request.IntegrationUid);
         //}
 
         //[TestCase(TestDataHelper.EMPTY_STRING)]

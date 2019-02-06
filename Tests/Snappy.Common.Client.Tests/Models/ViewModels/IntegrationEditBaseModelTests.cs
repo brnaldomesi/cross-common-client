@@ -35,7 +35,7 @@ namespace Snappy.Common.Client.Tests.Models.ViewModels
         [Test]
         public void IntegrationEditBaseModel_IntegrationNameInput()
         {
-            AssertInputModel(SystemUnderTest.IntegrationNameInput, "IntegrationName", "integration_name", true);
+            AssertInputModel(SystemUnderTest.IntegrationNameInput, "Name", "integration_name", true);
         }
 
         [Test]

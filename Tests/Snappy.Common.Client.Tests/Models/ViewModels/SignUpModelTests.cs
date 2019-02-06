@@ -1,8 +1,8 @@
 ﻿using NUnit.Framework;
-using Snappy.Common.Client.Models.InputModels;
-using Snappy.Common.Client.Models.ViewModels;
+
 using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 using Snappy.Common.Helpers;
+using Snappy.Service.Common.Client.Models.ViewModels.Membership;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Snappy.Common.Client.Models
+namespace Snappy.Common.Client.Models.ViewModels
 {
     public abstract class BaseModel
     {

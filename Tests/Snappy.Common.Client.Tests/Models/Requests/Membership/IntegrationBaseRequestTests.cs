@@ -12,9 +12,9 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void IntegrationBaseRequest_Constructor()
         {
-            var request = new IntegrationBaseRequest(TestDataHelper.UID);
+            var request = new IntegrationBaseRequest(TestDataHelper.Uid);
 
-            Assert.AreEqual(TestDataHelper.UID, request.IntegrationUid);
+            Assert.AreEqual(TestDataHelper.Uid, request.IntegrationUid);
         }
 
         [TestCase(TestDataHelper.STRING)]

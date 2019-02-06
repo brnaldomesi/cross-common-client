@@ -13,9 +13,9 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void IntegrationReadRequest_Constructor()
         {
-            var request = new IntegrationReadRequest(TestDataHelper.UID);
+            var request = new IntegrationReadRequest(TestDataHelper.Uid);
 
-            Assert.AreEqual(TestDataHelper.UID, request.IntegrationUid);
+            Assert.AreEqual(TestDataHelper.Uid, request.IntegrationUid);
         }
 
         [TestCase(TestDataHelper.EMPTY_STRING)]

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+
 using Snappy.Common.Models.Shared;
 
 namespace Snappy.Common.Client.Controllers

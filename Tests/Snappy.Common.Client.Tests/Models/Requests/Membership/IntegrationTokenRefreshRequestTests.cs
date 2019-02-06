@@ -13,14 +13,14 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         //[Test]
         //public void IntegrationTokenRefreshRequest_Constructor()
         //{
-        //    var request = new IntegrationTokenRefreshRequest(TestDataHelper.UID, TestDataHelper.UID_1);
+        //    var request = new IntegrationTokenRefreshRequest(TestDataHelper.Uid, TestDataHelper.Uid_1);
 
-        //    Assert.AreEqual(TestDataHelper.UID, request.IntegrationUid);
-        //    Assert.AreEqual(TestDataHelper.UID_1, request.TokenUid);
+        //    Assert.AreEqual(TestDataHelper.Uid, request.IntegrationUid);
+        //    Assert.AreEqual(TestDataHelper.Uid_1, request.TokenUid);
         //}
 
-        //[TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.UID_1)]
-        //[TestCase(TestDataHelper.UID, TestDataHelper.EMPTY_STRING)]
+        //[TestCase(TestDataHelper.EMPTY_STRING, TestDataHelper.Uid_1)]
+        //[TestCase(TestDataHelper.Uid, TestDataHelper.EMPTY_STRING)]
         //[TestCase(TestDataHelper.STRING, TestDataHelper.STRING)]
         //public void IntegrationTokenRefreshRequest_Argument_Validations(string integrationUid, string tokenUid)
         //{

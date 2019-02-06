@@ -13,13 +13,13 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void IntegrationTokenShowSecretRequest_Constructor()
         {
-            var request = new IntegrationClientSecretRequest(TestDataHelper.UID);
+            var request = new IntegrationClientSecretRequest(TestDataHelper.Uid);
 
-            Assert.AreEqual(TestDataHelper.UID, request.ClientUid);
+            Assert.AreEqual(TestDataHelper.Uid, request.ClientUid);
         }
 
         [TestCase(TestDataHelper.EMPTY_STRING)]
-        [TestCase(TestDataHelper.UID)]
+        [TestCase(TestDataHelper.Uid)]
         public void IntegrationTokenShowSecretRequest_Argument_Validations(string clientUid)
         {
             Assert.Throws<ArgumentException>(() =>

@@ -2,7 +2,6 @@
 
 using Snappy.Common.Client.Models.Requests.Membership;
 using Snappy.Common.Helpers;
-using Snappy.Service.Common.Model.Requests.Admin;
 
 namespace Snappy.Common.Client.Tests.Models.Requests.Membership
 {

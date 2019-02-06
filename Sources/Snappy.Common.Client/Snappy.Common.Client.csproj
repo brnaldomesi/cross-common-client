@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.ViewFeatures" Version="2.2.0" />
+    <PackageReference Include="NodaTime" Version="2.4.4" />
   </ItemGroup>
 
   <ItemGroup>
