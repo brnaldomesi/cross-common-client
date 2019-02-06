@@ -2,7 +2,7 @@
 
 using Snappy.Common.Client.Tests.Models.ViewModels.Base;
 using Snappy.Common.Helpers;
-using Snappy.Service.Common.Client.Models.ViewModels.Membership;
+using Snappy.Service.Common.Client.Models.ViewModels.User;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels
 {
