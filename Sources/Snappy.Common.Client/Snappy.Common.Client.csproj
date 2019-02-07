@@ -13,4 +13,8 @@
     <ProjectReference Include="..\..\..\snappy.common\Sources\Snappy.Common\Snappy.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Helpers\" />
+  </ItemGroup>
+
 </Project>
