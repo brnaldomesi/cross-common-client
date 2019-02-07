@@ -11,8 +11,8 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void UserDetailRequest_Constructor()
         {
-            var request = new UserDetailRequest(TestDataHelper.Uid);
-            Assert.AreEqual(TestDataHelper.Uid, request.UserUid);
+            var request = new UserDetailRequest(TestDataHelper.UID);
+            Assert.AreEqual(TestDataHelper.UID, request.UserUid);
         }
     }
 }

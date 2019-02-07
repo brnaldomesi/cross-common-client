@@ -14,9 +14,9 @@ namespace Snappy.Common.Client.Tests.Models.Requests.Membership
         [Test]
         public void IntegrationTokenRevokeRequest_Constructor()
         {
-            var request = new IntegrationTokenRevokeRequest(TestDataHelper.Uid_1);
+            var request = new IntegrationTokenRevokeRequest(TestDataHelper.UID_1);
 
-            Assert.AreEqual(TestDataHelper.Uid_1, request.TokenUid);
+            Assert.AreEqual(TestDataHelper.UID_1, request.TokenUid);
         }
 
         [TestCase(TestDataHelper.EMPTY_STRING)]
