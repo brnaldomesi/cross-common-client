@@ -4,14 +4,9 @@ using Snappy.Common.Models.Shared;
 
 namespace Snappy.Common.Client.Controllers
 {
-    public class BaseController : Controller
+    public abstract class BaseController : Controller
     {
         public CurrentUser CurrentUser { get; set; }
-
-        public BaseController()
-        {
-            
-        }
 
         public RedirectResult RedirectToHome()
         {
