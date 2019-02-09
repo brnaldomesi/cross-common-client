@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Data;
+using System.Linq;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
@@ -12,10 +14,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         protected BaseModel()
         {
-            ErrorMessages = new List<string>();
-            SuccessMessages = new List<string>();
-            WarningMessages = new List<string>();
-            InputErrorMessages = new List<string>();
+            ClearMessages();
         }
 
         public virtual void SetInputModelValues()
@@ -30,7 +29,10 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public bool IsValid()
         {
+            ClearMessages();
+
             SetInputErrorMessages();
+            InputErrorMessages = InputErrorMessages.Distinct().ToList();
 
             if (InputErrorMessages.Count > 0
                 || ErrorMessages.Count > 0)
@@ -40,6 +42,14 @@ namespace Snappy.Common.Client.Models.ViewModels
 
             return InputErrorMessages.Count == 0
                    && ErrorMessages.Count == 0;
+        }
+
+        private void ClearMessages()
+        {
+            ErrorMessages = new List<string>();
+            SuccessMessages = new List<string>();
+            WarningMessages = new List<string>();
+            InputErrorMessages = new List<string>();
         }
 
         public bool IsNotValid()
