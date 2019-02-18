@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 
 namespace Snappy.Common.Client.Models.ViewModels
@@ -11,6 +10,7 @@ namespace Snappy.Common.Client.Models.ViewModels
         public List<string> SuccessMessages { get; set; }
         public List<string> WarningMessages { get; set; }
         public List<string> InputErrorMessages { get; set; }
+        public List<string> InfoMessages { get; set; }
 
         protected BaseModel()
         {
@@ -49,6 +49,7 @@ namespace Snappy.Common.Client.Models.ViewModels
             ErrorMessages = new List<string>();
             SuccessMessages = new List<string>();
             WarningMessages = new List<string>();
+            InfoMessages = new List<string>();
             InputErrorMessages = new List<string>();
         }
 
