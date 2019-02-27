@@ -11,6 +11,11 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public HiddenInputModel OrganizationUidInput { get; set; }
 
+        public OrganizationBaseModel()
+        {
+            OrganizationUidInput = new HiddenInputModel("OrganizationUid");
+        }
+
         public override void SetInputModelValues()
         {
             OrganizationUidInput.Value = OrganizationUid.ToString("N");
