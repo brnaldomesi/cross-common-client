@@ -17,5 +17,18 @@ namespace Snappy.Common.Client.Controllers
         {
             return Redirect("/Home/AccessDenied");
         }
+
+        public ClientLogInfo GetClientInfoLog()
+        {
+            var log = new ClientLogInfo();
+
+            log.UserAgent = Request.Headers["User-Agent"].ToString();
+            log.Ip = "";
+            log.IpLocation = "";
+            log.Platform = "";
+            log.Browser = "";
+
+            return log;
+        }
     }
 }
