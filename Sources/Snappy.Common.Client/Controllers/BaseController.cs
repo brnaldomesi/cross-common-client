@@ -8,8 +8,6 @@ namespace Snappy.Common.Client.Controllers
     [Authorize]
     public abstract class BaseController : Controller
     {
-        public CurrentUser CurrentUser { get; set; }
-
         public RedirectResult RedirectToHome()
         {
             return Redirect("/");
