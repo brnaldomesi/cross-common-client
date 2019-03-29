@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 using Snappy.Common.Models.Shared;
 
 namespace Snappy.Common.Client.Controllers
 {
+    [Authorize]
     public abstract class BaseController : Controller
     {
         public CurrentUser CurrentUser { get; set; }
