@@ -7,10 +7,12 @@ namespace Snappy.Common.Client.Helpers
     {
         public static void MapMessages(this BaseModel model, BaseResponse response)
         {
-            model.ErrorMessages = response.ErrorMessages;
-            model.InfoMessages = response.InfoMessages;
-            model.WarningMessages = response.WarningMessages;
-            model.SuccessMessages = response.SuccessMessages;
+            model.ErrorMessages.AddRange(response.ErrorMessages);
+            model.InfoMessages.AddRange(response.InfoMessages);
+            model.WarningMessages.AddRange(response.WarningMessages);
+            model.SuccessMessages.AddRange(response.SuccessMessages);
+
+            model.SetInputModelValues();
         }
     }
 }
