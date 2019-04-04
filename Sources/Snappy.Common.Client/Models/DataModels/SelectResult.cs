@@ -12,5 +12,11 @@
             Text = text;
             Image = image;
         }
+
+        public SelectResult(string value, string text)
+        {
+            Value = value;
+            Text = text;
+        }
     }
 }
