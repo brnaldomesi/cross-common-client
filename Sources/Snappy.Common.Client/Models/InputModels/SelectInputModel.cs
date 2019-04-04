@@ -6,8 +6,7 @@
         public string Parent { get; set; }
 
         public SelectInputModel(string name, string labelKey, string dataUrl,
-                                string parent = "", bool isRequired = false)
-                                : base(name, labelKey, isRequired)
+                                string parent = "", bool isRequired = false) : base(name, labelKey, isRequired)
         {
             DataUrl = dataUrl;
             Parent = parent;
