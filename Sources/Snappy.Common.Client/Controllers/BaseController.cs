@@ -23,7 +23,7 @@ namespace Snappy.Common.Client.Controllers
             var log = new ClientLogInfo();
 
             log.UserAgent = Request.Headers["User-Agent"].ToString();
-            log.Ip = "";
+            log.Ip = HttpContext.Connection.RemoteIpAddress.ToString();
             log.IpLocation = "";
             log.Platform = "";
             log.Browser = "";
