@@ -14,13 +14,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Services\Common\snappy.service.common\Sources\Snappy.Service.Common.Client\Snappy.Service.Common.Client.csproj" />
-    <ProjectReference Include="..\..\..\..\Services\Common\snappy.service.common\Sources\Snappy.Service.Common\Snappy.Service.Common.csproj" />
     <ProjectReference Include="..\..\..\snappy.common\Sources\Snappy.Common\Snappy.Common.csproj" />
+    <ProjectReference Include="..\..\..\snappy.common\Tests\Snappy.Common.Tests\Snappy.Common.Tests.csproj" />
+    <ProjectReference Include="..\..\Sources\Snappy.Common.Client\Snappy.Common.Client.csproj" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Models\Requests\Admin\" />
+    <Folder Include="Models\Requests\Membership\" />
   </ItemGroup>
 
 </Project>

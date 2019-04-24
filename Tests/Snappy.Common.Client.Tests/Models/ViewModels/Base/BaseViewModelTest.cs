@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 
 using NUnit.Framework;
-
 using Snappy.Common.Client.Models.InputModels;
 
 namespace Snappy.Common.Client.Tests.Models.ViewModels.Base
