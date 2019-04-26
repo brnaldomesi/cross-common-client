@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using System.IO;
+using System.Text;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 using Snappy.Common.Models.Shared;
@@ -29,6 +31,17 @@ namespace Snappy.Common.Client.Controllers
             log.Browser = "";
 
             return log;
+        }
+
+        protected string GetRequestBodyString()
+        {
+            string bodyStr;
+            using (var reader = new StreamReader(Request.Body, Encoding.UTF8, true, 1024, true))
+            {
+                bodyStr = reader.ReadToEnd();
+            }
+
+            return bodyStr;
         }
     }
 }
