@@ -2,14 +2,27 @@
 {
     public class SelectInputModel : InputModel
     {
+        public bool IsOptionTypeContent { get; set; }
+        public bool IsAllOptionsVisible { get; set; }
+        public bool IsMultiple { get; set; }
+        public bool IsHavingDetailInfo { get; set; }
+
+        public string DetailInfoDataUrl { get; set; }
         public string DataUrl { get; set; }
         public string Parent { get; set; }
 
         public SelectInputModel(string name, string labelKey, string dataUrl,
-                                string parent = "", bool isRequired = false) : base(name, labelKey, isRequired)
+                                bool isRequired = false, string parentId = "", bool isOptionTypeContent = false,
+                                bool isAllOptionsVisible = false, bool isMultiple = false, bool isHavingDetailInfo = false,
+                                string detailInfoDataUrl = "") : base(name, labelKey, isRequired)
         {
             DataUrl = dataUrl;
-            Parent = parent;
+            Parent = parentId;
+            DetailInfoDataUrl = detailInfoDataUrl;
+            IsOptionTypeContent = isOptionTypeContent;
+            IsAllOptionsVisible = isAllOptionsVisible;
+            IsMultiple = isMultiple;
+            IsHavingDetailInfo = isHavingDetailInfo;
         }
     }
 }
