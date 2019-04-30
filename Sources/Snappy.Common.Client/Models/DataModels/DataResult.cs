@@ -20,10 +20,10 @@ namespace Snappy.Common.Client.Models.DataModels
 
         public void AddHeaders(params string[] name)
         {
-            for (int i = 0; i < name.Length; i++)
+            for (var i = 0; i < name.Length; i++)
             {
                 var item = name[i];
-                Headers.Add(new DataHeaderInfo { Key = item, DisplayOrder = i });
+                Headers.Add(new DataHeaderInfo { Key = item, DisplayIndex = i });
             }
         }
 
@@ -51,7 +51,7 @@ namespace Snappy.Common.Client.Models.DataModels
 
     public class DataHeaderInfo
     {
-        public int DisplayOrder { get; set; }
+        public int DisplayIndex { get; set; }
         public string Key { get; set; }
         public int WidthPercent { get; set; }
         public string AlignmentHorizontal { get; set; }
