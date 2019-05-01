@@ -8,8 +8,10 @@ using Snappy.Common.Models.Shared;
 namespace Snappy.Common.Client.Controllers
 {
     [Authorize]
-    public abstract class BaseController : Controller
+    public abstract class BaseController : Controller, ICurrentUser
     {
+        public CurrentUser CurrentUser { get; set; }
+
         public RedirectResult RedirectToHome()
         {
             return Redirect("/");
