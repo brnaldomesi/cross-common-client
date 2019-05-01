@@ -6,6 +6,7 @@
         public bool IsAllOptionsVisible { get; set; }
         public bool IsMultiple { get; set; }
         public bool IsHavingDetailInfo { get; set; }
+        public bool IsSetFirstItem { get; set; }
 
         public string DetailInfoDataUrl { get; set; }
         public string DataUrl { get; set; }
@@ -13,7 +14,7 @@
 
         public SelectInputModel(string name, string labelKey, string dataUrl,
                                 bool isRequired = false, string parentId = "", bool isOptionTypeContent = false,
-                                bool isAllOptionsVisible = false, bool isMultiple = false, bool isHavingDetailInfo = false,
+                                bool isSetFirstItem = true, bool isAllOptionsVisible = false, bool isMultiple = false, bool isHavingDetailInfo = false,
                                 string detailInfoDataUrl = "") : base(name, labelKey, isRequired)
         {
             DataUrl = dataUrl;
@@ -23,6 +24,7 @@
             IsAllOptionsVisible = isAllOptionsVisible;
             IsMultiple = isMultiple;
             IsHavingDetailInfo = isHavingDetailInfo;
+            IsSetFirstItem = isSetFirstItem;
         }
     }
 }
