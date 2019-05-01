@@ -11,7 +11,7 @@ namespace Snappy.Common.Client.Tests.Models.InputModels
         [TestCase("name", "label", "dataUrl", "parent", false)]
         public void SelectInputModel(string name, string labelKey, string dataUrl, string parent, bool isRequired)
         {
-            var model = new SelectInputModel(name, labelKey, dataUrl, parent, isRequired);
+            var model = new SelectInputModel(name, labelKey, dataUrl,false, parent, isRequired);
 
             Assert.AreEqual(name, model.Name);
             Assert.AreEqual(labelKey, model.LabelKey);
