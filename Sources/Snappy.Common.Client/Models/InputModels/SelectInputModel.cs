@@ -1,4 +1,6 @@
-﻿namespace Snappy.Common.Client.Models.InputModels
+﻿using System;
+
+namespace Snappy.Common.Client.Models.InputModels
 {
     public class SelectInputModel : InputModel
     {
@@ -25,6 +27,11 @@
             IsMultiple = isMultiple;
             IsHavingDetailInfo = isHavingDetailInfo;
             IsSetFirstItem = isSetFirstItem;
+
+            if (IsMultiple && IsHavingDetailInfo)
+            {
+                throw new ArgumentException("multiple selects can not have detail info panel!");
+            }
         }
     }
 }
