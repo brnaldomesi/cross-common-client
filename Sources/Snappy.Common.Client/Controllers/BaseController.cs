@@ -2,7 +2,9 @@
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 
+using Snappy.Common.Client.Helpers;
 using Snappy.Common.Models.Shared;
 
 namespace Snappy.Common.Client.Controllers
@@ -26,11 +28,29 @@ namespace Snappy.Common.Client.Controllers
         {
             var log = new ClientLogInfo();
 
-            log.UserAgent = Request.Headers["User-Agent"].ToString();
-            log.Ip = HttpContext?.Connection?.RemoteIpAddress?.ToString();
-            log.IpLocation = "";
-            log.Platform = "";
-            log.Browser = "";
+            if (Request.Headers.ContainsKey(HeaderNames.UserAgent))
+            {
+                log.UserAgent = Request.Headers[HeaderNames.UserAgent].ToString();
+                log.Platform = "";
+                log.PlatformVersion = "";
+                log.Browser = "";
+                log.BrowserVersion = "";
+            }
+
+            if (Request.Headers.ContainsKey(HeaderHelper.HEADER_X_IP))
+            {
+                log.Ip = Request.Headers[HeaderHelper.HEADER_X_IP].ToString();
+            }
+
+            if (Request.Headers.ContainsKey(HeaderHelper.HEADER_X_COUNTRY))
+            {
+                log.Country = Request.Headers[HeaderHelper.HEADER_X_COUNTRY].ToString();
+            }
+
+            if (Request.Headers.ContainsKey(HeaderHelper.HEADER_X_CITY))
+            {
+                log.City = Request.Headers[HeaderHelper.HEADER_X_CITY].ToString();
+            }
 
             return log;
         }
