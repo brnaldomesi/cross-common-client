@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
 
 using Snappy.Common.Client.Helpers;
+using Snappy.Common.Models.Requests;
 using Snappy.Common.Models.Shared;
 
 namespace Snappy.Common.Client.Controllers
@@ -60,6 +61,18 @@ namespace Snappy.Common.Client.Controllers
             }
 
             return bodyStr;
+        }
+
+        protected static void SetPaging(int skip, int take, BasePagedRequest request)
+        {
+            request.PagingInfo.Skip = skip;
+            request.PagingInfo.Take = take;
+        }
+
+        protected static void SetPaging(int skip, int take, BaseAuthenticatedPagedRequest request)
+        {
+            request.PagingInfo.Skip = skip;
+            request.PagingInfo.Take = take;
         }
     }
 }
