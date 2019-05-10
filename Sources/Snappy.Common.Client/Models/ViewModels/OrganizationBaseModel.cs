@@ -18,7 +18,7 @@ namespace Snappy.Common.Client.Models.ViewModels
 
         public override void SetInputModelValues()
         {
-            OrganizationUidInput.Value = OrganizationUid.ToString("N");
+            OrganizationUidInput.Value = OrganizationUid.ToUidString();
         }
 
         public override void SetInputErrorMessages()
