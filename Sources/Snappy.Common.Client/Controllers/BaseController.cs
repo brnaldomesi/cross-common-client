@@ -27,6 +27,7 @@ namespace Snappy.Common.Client.Controllers
         public ClientLogInfo GetClientInfoLog()
         {
             var log = new ClientLogInfo();
+            log.Ip = Request.HttpContext.Connection.RemoteIpAddress.ToString();
 
             if (Request.Headers.ContainsKey(HeaderNames.UserAgent))
             {
@@ -35,11 +36,6 @@ namespace Snappy.Common.Client.Controllers
                 log.PlatformVersion = "";
                 log.Browser = "";
                 log.BrowserVersion = "";
-            }
-
-            if (Request.Headers.ContainsKey(HeaderHelper.HEADER_X_IP))
-            {
-                log.Ip = Request.Headers[HeaderHelper.HEADER_X_IP].ToString();
             }
 
             if (Request.Headers.ContainsKey(HeaderHelper.HEADER_X_COUNTRY))
