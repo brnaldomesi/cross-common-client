@@ -6,6 +6,7 @@ namespace Snappy.Common.Client.Models.DataModels
     {
         public bool IsOk { get; set; }
         public List<string> Messages { get; set; }
+        public object Item { get; set; }
 
         public CommonResult()
         {
