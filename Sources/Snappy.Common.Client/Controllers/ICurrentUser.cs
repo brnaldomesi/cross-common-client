@@ -4,6 +4,6 @@ namespace Snappy.Common.Client.Controllers
 {
     public interface ICurrentUser
     {
-        CurrentUser CurrentUser { get; set; }
+        CurrentUser CurrentUser { get; }
     }
 }

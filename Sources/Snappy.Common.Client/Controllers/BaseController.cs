@@ -13,7 +13,7 @@ namespace Snappy.Common.Client.Controllers
     [Authorize]
     public abstract class BaseController : Controller, ICurrentUser
     {
-        public CurrentUser CurrentUser { get; set; }
+        public CurrentUser CurrentUser { get; }
 
         public RedirectResult RedirectToHome()
         {
@@ -63,13 +63,13 @@ namespace Snappy.Common.Client.Controllers
             return bodyStr;
         }
 
-        protected static void SetPaging(int skip, int take, BasePagedRequest request)
+        protected void SetPaging(int skip, int take, BasePagedRequest request)
         {
             request.PagingInfo.Skip = skip;
             request.PagingInfo.Take = take;
         }
 
-        protected static void SetPaging(int skip, int take, BaseAuthenticatedPagedRequest request)
+        protected void SetPaging(int skip, int take, BaseAuthenticatedPagedRequest request)
         {
             request.PagingInfo.Skip = skip;
             request.PagingInfo.Take = take;
