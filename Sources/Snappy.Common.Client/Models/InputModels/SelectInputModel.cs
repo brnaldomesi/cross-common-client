@@ -14,6 +14,8 @@ namespace Snappy.Common.Client.Models.InputModels
         public string DataUrl { get; set; }
         public string Parent { get; set; }
 
+        public string Text { get; set; }
+
         public SelectInputModel(string name, string labelKey, string dataUrl,
                                 bool isRequired = false, string parentId = "", bool isOptionTypeContent = false,
                                 bool isSetFirstItem = true, bool isAllOptionsVisible = false, bool isMultiple = false, bool isHavingDetailInfo = false,
