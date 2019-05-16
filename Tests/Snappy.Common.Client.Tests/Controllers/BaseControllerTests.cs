@@ -1,11 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-
 using NUnit.Framework;
 using Shouldly;
-
 using Snappy.Common.Client.Controllers;
 
-namespace Snappy.Common.Tests.Controllers
+namespace Snappy.Common.Client.Tests.Controllers
 {
     [TestFixture]
     public class BaseControllerTests
