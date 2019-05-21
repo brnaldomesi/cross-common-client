@@ -2,7 +2,7 @@
 {
     public class EmailInputModel : InputModel
     {
-        public EmailInputModel(string name, string labelKey, bool isRequired = false, string value = "") : base(name, labelKey, isRequired, value)
+        public EmailInputModel(string name, string labelKey, bool isRequired = false) : base(name, labelKey, isRequired)
         {
         }
     }
