@@ -6,6 +6,7 @@ namespace Snappy.Common.Client.Models.InputModels
     {
         public string Name { get; }
         public string LabelKey { get; }
+        public string InfoText { get; set; }
         public bool IsRequired { get; }
         public string Value { get; set; }
         public List<string> ErrorMessage { get; set; }
