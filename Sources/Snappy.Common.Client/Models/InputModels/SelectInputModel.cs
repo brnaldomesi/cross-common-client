@@ -15,6 +15,10 @@ namespace Snappy.Common.Client.Models.InputModels
         public string Parent { get; set; }
 
         public string Text { get; set; }
+        public string TextFieldName { get; set; }
+
+        public bool IsAddNewEnabled { get; set; }
+        public string AddNewUrl { get; set; }
 
         public SelectInputModel(string name, string labelKey, string dataUrl,
                                 bool isRequired = false, string parentId = "", bool isOptionTypeContent = false,
@@ -34,6 +38,19 @@ namespace Snappy.Common.Client.Models.InputModels
             {
                 throw new ArgumentException("multiple selects can not have detail info panel!");
             }
+        }
+
+        public SelectInputModel(string name, string textFieldName, string labelKey,
+                                string dataUrl, string parentId = "", bool isRequired = true,
+                                bool isMultiple = false, bool isAddNewEnabled = false, string addNewUrl = "") : base(name, labelKey, isRequired)
+        {
+            TextFieldName = textFieldName;
+            DataUrl = dataUrl;
+            Parent = parentId;
+            IsMultiple = isMultiple;
+            IsSetFirstItem = true;
+            IsAddNewEnabled = isAddNewEnabled;
+            AddNewUrl = addNewUrl;
         }
     }
 }
