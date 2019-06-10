@@ -43,7 +43,7 @@ namespace Snappy.Common.Client.Helpers
             logText.Append(string.Empty.PadLeft(34, '*'));
             logText.Append(Environment.NewLine);
 
-            File.AppendAllText(Path.Combine(rootPath, "logs", "log_" + DateTime.Today.ToString("yyyy-MM-dd-HH") + ".log"), logText.ToString());
+            File.AppendAllText(Path.Combine(rootPath, "logs", "log_" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH") + ".log"), logText.ToString());
         }
     }
 }
