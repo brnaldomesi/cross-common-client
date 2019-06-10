@@ -49,7 +49,7 @@ namespace Snappy.Common.Client.Helpers
             {
                 return cell.StringCellValue;
             }
-            catch (Exception e)
+            catch
             {
                 return cell.NumericCellValue.ToString(CultureInfo.InvariantCulture);
             }
@@ -78,14 +78,14 @@ namespace Snappy.Common.Client.Helpers
             {
                 return Instant.FromDateTimeUtc(cell.DateCellValue);
             }
-            catch (Exception e)
+            catch
             {
                 try
                 {
                     return new DatetimeHelper().GetInstantFromString(cell.StringCellValue, "dd/MM/yyyy");
 
                 }
-                catch (Exception ex)
+                catch
                 {
                     return Instant.MinValue;
                 }
