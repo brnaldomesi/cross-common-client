@@ -74,12 +74,12 @@ namespace Snappy.Common.Client.Controllers
             request.PagingInfo.Take = take;
         }
 
-        public string GetInstantAsString(Instant instant, string format = "yyyy-MM-dd-HH-mm-ss")
+        public string GetInstantAsString(Instant instant, string format = "yyyy/MM/dd HH:mm:ss")
         {
             return InstantPattern.CreateWithInvariantCulture(format).Format(instant);
         }
 
-        public string GetInstantAsString(Instant? instant, string format = "yyyy-MM-dd-HH-mm-ss")
+        public string GetInstantAsString(Instant? instant, string format = "yyyy/MM/dd HH:mm:ss")
         {
             if (instant.HasValue)
             {
