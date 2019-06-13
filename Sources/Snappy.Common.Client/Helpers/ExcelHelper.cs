@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 
-using NodaTime;
+
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
@@ -64,32 +64,6 @@ namespace Snappy.Common.Client.Helpers
             }
 
             return cell.NumericCellValue;
-        }
-
-        public Instant GetValueDatetime(IRow row, int index)
-        {
-            var cell = row.GetCell(index);
-            if (cell == null)
-            {
-                return Instant.MinValue;
-            }
-
-            try
-            {
-                return Instant.FromDateTimeUtc(cell.DateCellValue);
-            }
-            catch
-            {
-                try
-                {
-                    return new DatetimeHelper().GetInstantFromString(cell.StringCellValue, "dd/MM/yyyy");
-
-                }
-                catch
-                {
-                    return Instant.MinValue;
-                }
-            }
         }
     }
 }

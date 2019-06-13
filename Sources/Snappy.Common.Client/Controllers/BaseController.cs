@@ -1,10 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Text;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Net.Http.Headers;
-using NodaTime;
-using NodaTime.Text;
+
 using Snappy.Common.Client.Helpers;
 using Snappy.Common.Models.Requests;
 using Snappy.Common.Models.Shared;
@@ -74,16 +74,16 @@ namespace Snappy.Common.Client.Controllers
             request.PagingInfo.Take = take;
         }
 
-        public string GetInstantAsString(Instant instant, string format = "yyyy/MM/dd HH:mm:ss")
+        public string GetDateTimeAsString(DateTime dateTime, string format = "yyyy/MM/dd HH:mm:ss")
         {
-            return InstantPattern.CreateWithInvariantCulture(format).Format(instant);
+            return dateTime.ToString(format);
         }
 
-        public string GetInstantAsString(Instant? instant, string format = "yyyy/MM/dd HH:mm:ss")
+        public string GetDateTimeAsString(DateTime? dateTime, string format = "yyyy/MM/dd HH:mm:ss")
         {
-            if (instant.HasValue)
+            if (dateTime.HasValue)
             {
-                return InstantPattern.CreateWithInvariantCulture(format).Format(instant.Value);
+                return dateTime.Value.ToString(format);
             }
 
             return "-";
