@@ -76,6 +76,11 @@ namespace Snappy.Common.Client.Controllers
 
         public string GetDateTimeAsString(DateTime dateTime, string format = "yyyy/MM/dd HH:mm:ss")
         {
+            if (dateTime == DateTime.MinValue)
+            {
+                return "-";
+            }
+
             return dateTime.ToString(format);
         }
 
@@ -83,6 +88,11 @@ namespace Snappy.Common.Client.Controllers
         {
             if (dateTime.HasValue)
             {
+                if (dateTime.Value == DateTime.MinValue)
+                {
+                    return "-";
+                }
+
                 return dateTime.Value.ToString(format);
             }
 
