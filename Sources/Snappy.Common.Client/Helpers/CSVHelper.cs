@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+
 using Microsoft.AspNetCore.Http;
 
 namespace Snappy.Common.Client.Helpers
