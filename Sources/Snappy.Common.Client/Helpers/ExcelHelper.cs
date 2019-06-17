@@ -1,14 +1,10 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 using System.IO;
 using Microsoft.AspNetCore.Http;
-
 
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
-
-using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Helpers
 {
