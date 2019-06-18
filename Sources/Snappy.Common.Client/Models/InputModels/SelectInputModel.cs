@@ -42,13 +42,13 @@ namespace Snappy.Common.Client.Models.InputModels
 
         public SelectInputModel(string name, string textFieldName, string labelKey,
                                 string dataUrl, string parentId = "", bool isRequired = true,
-                                bool isMultiple = false, bool isAddNewEnabled = false, string addNewUrl = "") : base(name, labelKey, isRequired)
+                                bool isMultiple = false, bool isAddNewEnabled = false, string addNewUrl = "", bool isSetFirstItem = true) : base(name, labelKey, isRequired)
         {
             TextFieldName = textFieldName;
             DataUrl = dataUrl;
             Parent = parentId;
             IsMultiple = isMultiple;
-            IsSetFirstItem = true;
+            IsSetFirstItem = isSetFirstItem;
             IsAddNewEnabled = isAddNewEnabled;
             AddNewUrl = addNewUrl;
         }
