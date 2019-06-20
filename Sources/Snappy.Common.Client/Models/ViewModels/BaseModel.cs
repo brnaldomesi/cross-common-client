@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Snappy.Common.Client.Models.ViewModels
@@ -11,6 +12,14 @@ namespace Snappy.Common.Client.Models.ViewModels
         public List<string> WarningMessages { get; set; }
         public List<string> InputErrorMessages { get; set; }
         public List<string> InfoMessages { get; set; }
+
+        public string CreatedByName { get; set; }
+        public Guid CreatedBy { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+        public string UpdatedByName { get; set; }
+        public Guid? UpdatedBy { get; set; }
+        public DateTime? UpdatedAt { get; set; }
 
         protected BaseModel()
         {
