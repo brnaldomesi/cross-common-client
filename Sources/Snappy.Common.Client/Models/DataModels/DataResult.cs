@@ -63,6 +63,11 @@ namespace Snappy.Common.Client.Models.DataModels
         {
             return PrepareButton(name, $"handleChangeActivationRow(this, \"{postUrl}\")", "btn-secondary", confirmTitle, confirmContent);
         }
+
+        public string PrepareRestoreButton(string name, string postUrl, string confirmTitle = "are_you_sure_you_want_to_restore_title", string confirmContent = "are_you_sure_you_want_to_restore_content")
+        {
+            return PrepareButton(name, $"handleRestoreRow(this, \"{postUrl}\")", "btn-secondary", confirmTitle, confirmContent);
+        }
     }
 
     public class DataHeaderInfo
