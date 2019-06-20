@@ -21,7 +21,7 @@ namespace Snappy.Common.Client.Models.InputModels
         public string AddNewUrl { get; set; }
 
         public SelectInputModel(string name, string labelKey, string dataUrl,
-                                bool isRequired = false, string parentId = "", bool isOptionTypeContent = false,
+                                bool isRequired, string parentId = "", bool isOptionTypeContent = false,
                                 bool isSetFirstItem = true, bool isAllOptionsVisible = false, bool isMultiple = false, bool isHavingDetailInfo = false,
                                 string detailInfoDataUrl = "") : base(name, labelKey, isRequired)
         {
@@ -38,6 +38,35 @@ namespace Snappy.Common.Client.Models.InputModels
             {
                 throw new ArgumentException("multiple selects can not have detail info panel!");
             }
+        }
+
+        public SelectInputModel(string prefix) : base(prefix + "Uid", prefix.ToLowerInvariant(), true)
+        {
+            TextFieldName = $"{prefix}Name";
+            DataUrl = $"/{prefix}/SelectData";
+        }
+
+        public SelectInputModel(string prefix, string dataUrl) : base(prefix + "Uid", prefix.ToLowerInvariant(), true)
+        {
+            TextFieldName = $"{prefix}Name";
+            DataUrl = dataUrl;
+        }
+
+        public SelectInputModel(string prefix, string labelKey, string dataUrl) : base(prefix + "Uid", labelKey, true)
+        {
+            TextFieldName = $"{prefix}Name";
+            DataUrl = dataUrl;
+        }
+
+        public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
+                                bool isRequired = false, bool isSetFirstItem = true, bool isAllOptionsVisible = true,
+                                bool isMultiple = false) : base(name, labelKey, isRequired)
+        {
+            TextFieldName = textFieldName;
+            DataUrl = dataUrl;
+            IsAllOptionsVisible = isAllOptionsVisible;
+            IsMultiple = isMultiple;
+            IsSetFirstItem = isSetFirstItem;
         }
 
         public SelectInputModel(string name, string textFieldName, string labelKey,
