@@ -40,6 +40,20 @@ namespace Snappy.Common.Client.Models.InputModels
             }
         }
 
+        public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
+                                bool isRequired, string parentId, bool isMultiple) : base(name, labelKey, isRequired)
+        {
+            DataUrl = dataUrl;
+            Parent = parentId;
+            IsMultiple = isMultiple;
+            TextFieldName = textFieldName;
+
+            if (IsMultiple && IsHavingDetailInfo)
+            {
+                throw new ArgumentException("multiple selects can not have detail info panel!");
+            }
+        }
+
         public SelectInputModel(string prefix) : base(prefix + "Uid", prefix.ToLowerInvariant(), true)
         {
             TextFieldName = $"{prefix}Name";
