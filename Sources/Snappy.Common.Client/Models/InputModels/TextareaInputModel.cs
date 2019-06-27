@@ -7,7 +7,7 @@
 
         public TextareaInputModel(string name, string labelKey, bool isRequired = false, string value = "") : base(name, labelKey, isRequired, value)
         {
-            Rows = 5;
+            Rows = 3;
             Cols = 70;
         }
     }
