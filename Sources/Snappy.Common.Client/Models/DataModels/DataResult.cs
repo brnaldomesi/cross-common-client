@@ -41,7 +41,7 @@ namespace Snappy.Common.Client.Models.DataModels
                 targetBlank = " target='_blank'";
             }
 
-            return $"<a href='{url}'{targetBlank}>{name}</a>";
+            return $"<a data-translation='{name}' href='{url}'{targetBlank}>{name}</a>";
         }
 
         public string PrepareLink(string url, bool isTargetBlank = true)
