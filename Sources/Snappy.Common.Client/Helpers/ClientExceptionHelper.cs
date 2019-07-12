@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 using Snappy.Common.Helpers;
 
@@ -24,7 +25,7 @@ namespace Snappy.Common.Client.Helpers
             sb.Append(Environment.NewLine);
         }
 
-        public void LogException(Exception exception, string rootPath)
+        public async Task LogException(Exception exception, string rootPath)
         {
             var logText = new StringBuilder(Environment.NewLine);
 
@@ -43,7 +44,7 @@ namespace Snappy.Common.Client.Helpers
             logText.Append(string.Empty.PadLeft(34, '*'));
             logText.Append(Environment.NewLine);
 
-            File.AppendAllText(Path.Combine(rootPath, "logs", "log_" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH") + ".log"), logText.ToString());
+            await File.AppendAllTextAsync(Path.Combine(rootPath, "logs", "log_" + DateTime.UtcNow.ToString("yyyy-MM-dd-HH") + ".log"), logText.ToString());
         }
     }
 }
