@@ -54,22 +54,25 @@ namespace Snappy.Common.Client.Models.InputModels
             }
         }
 
-        public SelectInputModel(string prefix) : base(prefix + "Uid", prefix.ToLowerInvariant(), true)
+        public SelectInputModel(string name) : base(name + "Uid", name.ToLowerInvariant(), true)
         {
-            TextFieldName = $"{prefix}Name";
-            DataUrl = $"/{prefix}/SelectData";
+            TextFieldName = $"{name}Name";
+            DataUrl = $"/{name}/SelectData";
         }
 
-        public SelectInputModel(string prefix, string dataUrl) : base(prefix + "Uid", prefix.ToLowerInvariant(), true)
+        public SelectInputModel(string name, string dataUrl) : base(name + "Uid", name.ToLowerInvariant(), true)
         {
-            TextFieldName = $"{prefix}Name";
+            TextFieldName = $"{name}Name";
             DataUrl = dataUrl;
         }
 
-        public SelectInputModel(string prefix, string labelKey, string dataUrl) : base(prefix + "Uid", labelKey, true)
+        public SelectInputModel(string name, string labelKey, string dataUrl,  bool required = false, string addNewUrl = "") : base(name + "Uid", labelKey, required)
         {
-            TextFieldName = $"{prefix}Name";
+            TextFieldName = $"{name}Name";
             DataUrl = dataUrl;
+            AddNewUrl = addNewUrl;
+            IsAddNewEnabled = !string.IsNullOrEmpty(addNewUrl);
+            IsSetFirstItem = true;
         }
 
         public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
