@@ -20,25 +20,25 @@ namespace Snappy.Common.Client.Models.InputModels
         public bool IsAddNewEnabled { get; set; }
         public string AddNewUrl { get; set; }
 
-        public SelectInputModel(string name, string labelKey, string dataUrl,
-                                bool isRequired, string parentId = "", bool isOptionTypeContent = false,
-                                bool isSetFirstItem = true, bool isAllOptionsVisible = false, bool isMultiple = false, bool isHavingDetailInfo = false,
-                                string detailInfoDataUrl = "") : base(name, labelKey, isRequired)
-        {
-            DataUrl = dataUrl;
-            Parent = parentId;
-            DetailInfoDataUrl = detailInfoDataUrl;
-            IsOptionTypeContent = isOptionTypeContent;
-            IsAllOptionsVisible = isAllOptionsVisible;
-            IsMultiple = isMultiple;
-            IsHavingDetailInfo = isHavingDetailInfo;
-            IsSetFirstItem = isSetFirstItem;
+        //public SelectInputModel(string name, string labelKey, string dataUrl,
+        //                        bool isRequired, string parentId = "", bool isOptionTypeContent = false,
+        //                        bool isSetFirstItem = true, bool isAllOptionsVisible = false, bool isMultiple = false, bool isHavingDetailInfo = false,
+        //                        string detailInfoDataUrl = "") : base(name, labelKey, isRequired)
+        //{
+        //    DataUrl = dataUrl;
+        //    Parent = parentId;
+        //    DetailInfoDataUrl = detailInfoDataUrl;
+        //    IsOptionTypeContent = isOptionTypeContent;
+        //    IsAllOptionsVisible = isAllOptionsVisible;
+        //    IsMultiple = isMultiple;
+        //    IsHavingDetailInfo = isHavingDetailInfo;
+        //    IsSetFirstItem = isSetFirstItem;
 
-            if (IsMultiple && IsHavingDetailInfo)
-            {
-                throw new ArgumentException("multiple selects can not have detail info panel!");
-            }
-        }
+        //    if (IsMultiple && IsHavingDetailInfo)
+        //    {
+        //        throw new ArgumentException("multiple selects can not have detail info panel!");
+        //    }
+        //}
 
         public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
                                 bool isRequired, string parentId, bool isMultiple) : base(name, labelKey, isRequired)
