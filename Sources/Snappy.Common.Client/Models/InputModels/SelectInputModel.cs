@@ -40,19 +40,19 @@ namespace Snappy.Common.Client.Models.InputModels
         //    }
         //}
 
-        public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
-                                bool isRequired, string parentId, bool isMultiple) : base(name, labelKey, isRequired)
-        {
-            DataUrl = dataUrl;
-            Parent = parentId;
-            IsMultiple = isMultiple;
-            TextFieldName = textFieldName;
+        //public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
+        //                        bool isRequired, string parentId, bool isMultiple) : base(name, labelKey, isRequired)
+        //{
+        //    DataUrl = dataUrl;
+        //    Parent = parentId;
+        //    IsMultiple = isMultiple;
+        //    TextFieldName = textFieldName;
 
-            if (IsMultiple && IsHavingDetailInfo)
-            {
-                throw new ArgumentException("multiple selects can not have detail info panel!");
-            }
-        }
+        //    if (IsMultiple && IsHavingDetailInfo)
+        //    {
+        //        throw new ArgumentException("multiple selects can not have detail info panel!");
+        //    }
+        //}
 
         public SelectInputModel(string name) : base(name + "Uid", name.ToLowerInvariant(), true)
         {
@@ -75,28 +75,28 @@ namespace Snappy.Common.Client.Models.InputModels
             IsSetFirstItem = true;
         }
 
-        public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
-                                bool isRequired = false, bool isSetFirstItem = true, bool isAllOptionsVisible = true,
-                                bool isMultiple = false) : base(name, labelKey, isRequired)
-        {
-            TextFieldName = textFieldName;
-            DataUrl = dataUrl;
-            IsAllOptionsVisible = isAllOptionsVisible;
-            IsMultiple = isMultiple;
-            IsSetFirstItem = isSetFirstItem;
-        }
+        //public SelectInputModel(string name, string textFieldName, string labelKey, string dataUrl,
+        //                        bool isRequired = false, bool isSetFirstItem = true, bool isAllOptionsVisible = true,
+        //                        bool isMultiple = false) : base(name, labelKey, isRequired)
+        //{
+        //    TextFieldName = textFieldName;
+        //    DataUrl = dataUrl;
+        //    IsAllOptionsVisible = isAllOptionsVisible;
+        //    IsMultiple = isMultiple;
+        //    IsSetFirstItem = isSetFirstItem;
+        //}
 
-        public SelectInputModel(string name, string textFieldName, string labelKey,
-                                string dataUrl, string parentId = "", bool isRequired = true,
-                                bool isMultiple = false, bool isAddNewEnabled = false, string addNewUrl = "", bool isSetFirstItem = true) : base(name, labelKey, isRequired)
-        {
-            TextFieldName = textFieldName;
-            DataUrl = dataUrl;
-            Parent = parentId;
-            IsMultiple = isMultiple;
-            IsSetFirstItem = isSetFirstItem;
-            IsAddNewEnabled = isAddNewEnabled;
-            AddNewUrl = addNewUrl;
-        }
+        //public SelectInputModel(string name, string textFieldName, string labelKey,
+        //                        string dataUrl, string parentId = "", bool isRequired = true,
+        //                        bool isMultiple = false, bool isAddNewEnabled = false, string addNewUrl = "", bool isSetFirstItem = true) : base(name, labelKey, isRequired)
+        //{
+        //    TextFieldName = textFieldName;
+        //    DataUrl = dataUrl;
+        //    Parent = parentId;
+        //    IsMultiple = isMultiple;
+        //    IsSetFirstItem = isSetFirstItem;
+        //    IsAddNewEnabled = isAddNewEnabled;
+        //    AddNewUrl = addNewUrl;
+        //}
     }
 }
