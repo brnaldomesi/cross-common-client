@@ -5,7 +5,7 @@ namespace Snappy.Common.Client.Helpers
 {
     public static class ModelHelper
     {
-        public static void MapMessages(this BaseModel model, BaseResponse response)
+        public static void MapMessages(this BaseEditModel model, BaseResponse response)
         {
             model.ErrorMessages.AddRange(response.ErrorMessages);
             model.InfoMessages.AddRange(response.InfoMessages);

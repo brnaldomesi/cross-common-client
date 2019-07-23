@@ -1,6 +1,5 @@
-﻿using System;
-
-using Snappy.Common.Models.DataTransferObjects;
+﻿using Snappy.Common.Models.DataTransferObjects;
+using System;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
