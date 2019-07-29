@@ -1,7 +1,8 @@
-﻿using Snappy.Common.Client.Models.InputModels;
-using Snappy.Common.Helpers;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+
+using Snappy.Common.Client.Models.InputModels;
+using Snappy.Common.Helpers;
 
 namespace Snappy.Common.Client.Models.ViewModels
 {
@@ -15,7 +16,7 @@ namespace Snappy.Common.Client.Models.ViewModels
         public List<string> InputErrorMessages { get; set; }
         public List<string> InfoMessages { get; set; }
 
-        public BaseEditModel()
+        protected BaseEditModel()
         {
             ClearMessages();
             NameInput = new InputModel("Name", "name", true);
@@ -29,11 +30,6 @@ namespace Snappy.Common.Client.Models.ViewModels
         public virtual void SetInputErrorMessages()
         {
             Name = Name.TrimOrDefault();
-            if (Name.IsEmpty())
-            {
-                NameInput.ErrorMessage.Add("name_required_error_message");
-                InputErrorMessages.AddRange(NameInput.ErrorMessage);
-            }
         }
 
         public bool IsValid()
